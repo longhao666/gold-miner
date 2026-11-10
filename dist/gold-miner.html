@@ -1,0 +1,3314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#17100b">
+  <meta name="description" content="移动优先、可离线安装的黄金矿工小游戏：摆动钩子、抓取金块、限时达标。">
+  <title>黄金矿工 · 矿脉深处</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSLpu4Tph5Hnn7/lt6Xlm77moIciPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjQyJSIgY3k9IjMyJSIgcj0iNzYlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNGEyYjE4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzI0MTQwYyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDA5MDYiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3ciIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmYzk0YSIgc3RvcC1vcGFjaXR5PSIwLjQyIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmYzk0YSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIwLjgiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmMmIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC4zNSIgc3RvcC1jb2xvcj0iI2ZmZDM1YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNzIiIHN0b3AtY29sb3I9IiNlODljMWEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTk2NTA4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmZiZTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmZmJlMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNiZykiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjIxMiIgZmlsbD0idXJsKCNnbG93KSIvPgogIDxnPgogICAgPHBhdGggZD0iTTE1NCAyMTAgMjMxIDEyNiAzNDAgMTQ4IDM5MCAyNDAgMzU0IDM0NCAyNTAgMzg2IDE1NCAzMzAgMTI0IDI2NloiIGZpbGw9InVybCgjZ29sZCkiIHN0cm9rZT0iIzdhNDcwOCIgc3Ryb2tlLXdpZHRoPSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0ibTE4NCAyNDAgNzAtNzIgNzggMTYgMzQgNjYtMjggNjgtNzAgMjgtNzItMzgtMjAtNDJaIiBmaWxsPSJ1cmwoI3NoaW5lKSIgb3BhY2l0eT0iMC4yMiIvPgogICAgPHBhdGggZD0iTTE5NiAyMjZjMjItMTggMzktMzAgNjgtNDAgMjYtOSA1OC02IDc4IDYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZjdjOSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICAgIDxwYXRoIGQ9Ik0yODQgMjg4YzE4IDggMzMgNiA0NS00IiBmaWxsPSJub25lIiBzdHJva2U9IiM4YjUxMDgiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjUiLz4KICA8L2c+CiAgPGcgZmlsbD0iI2ZmZjdjZiI+CiAgICA8cGF0aCBkPSJtMzc2IDExOCA3IDE5IDE5IDctMTkgNy03IDE5LTctMTktMTktNyAxOS03WiIvPgogICAgPHBhdGggZD0ibTEzMiAzNDAgNSAxMyAxMyA1LTEzIDUtNSAxMy01LTEzLTEzLTUgMTMtNVoiIG9wYWNpdHk9IjAuOCIvPgogIDwvZz4KICA8cGF0aCBkPSJNMTUyIDM4NGM0MiAyNiAxMTggMzggMTk4IDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmYzk0YSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuMjUiLz4KPC9zdmc+Cg==">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <style>
+:root {
+  --bg: #120b07;
+  --panel: #2a1a10;
+  --panel-2: #352214;
+  --gold: #ffc94a;
+  --gold-2: #f39a1f;
+  --cream: #fff4d6;
+  --muted: #cbb48f;
+  --line: rgba(255, 201, 74, 0.22);
+  --red: #e75b45;
+  --green: #7bd88f;
+  --teal: #56d9c5;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% 8%, #4b2c1a 0, #24140c 42%, #0b0604 100%);
+  color: var(--cream);
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button {
+  font: inherit;
+}
+
+button,
+.stage {
+  -webkit-tap-highlight-color: transparent;
+}
+
+svg {
+  display: block;
+}
+
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+#app {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+}
+
+.stage {
+  position: relative;
+  width: min(100vw, 560px);
+  height: 100dvh;
+  max-height: 1020px;
+  overflow: hidden;
+  background: #1b120c;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.65);
+  touch-action: none;
+  isolation: isolate;
+}
+
+#game {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 45%, transparent 48%, rgba(0, 0, 0, 0.34) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.28));
+}
+
+/* ---------- HUD ---------- */
+
+.hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: calc(var(--safe-top) + 10px) 12px 0;
+  pointer-events: none;
+}
+
+.hud button {
+  pointer-events: auto;
+}
+
+.hud-top,
+.hud-bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.hud-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.pill {
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 9px;
+  border-radius: 12px;
+  background: rgba(26, 15, 8, 0.72);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pill b {
+  color: var(--cream);
+  font-size: 15px;
+}
+
+.level-pill b {
+  color: var(--gold);
+  font-size: 17px;
+}
+
+.target-pill b {
+  color: var(--gold);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-pill {
+  height: 38px;
+  min-width: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 10px;
+  border-radius: 13px;
+  background: linear-gradient(180deg, rgba(255, 201, 74, 0.16), rgba(26, 15, 8, 0.88));
+  border: 1px solid rgba(255, 201, 74, 0.35);
+  font-weight: 800;
+  font-size: 18px;
+  color: #ffe6a1;
+  font-variant-numeric: tabular-nums;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.timer-pill .icon {
+  width: 17px;
+  height: 17px;
+  opacity: 0.8;
+}
+
+.timer-pill.warning {
+  color: #fff;
+  background: linear-gradient(180deg, rgba(231, 91, 69, 0.92), rgba(118, 28, 20, 0.94));
+  border-color: rgba(255, 150, 130, 0.8);
+  animation: pulse 0.8s ease-in-out infinite;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(26, 15, 8, 0.72);
+  color: var(--cream);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+.hud-bottom {
+  margin-top: 8px;
+}
+
+.money-pill {
+  height: 30px;
+  min-width: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 0 10px;
+  border-radius: 11px;
+  background: rgba(26, 15, 8, 0.72);
+  border: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.money-pill b {
+  color: var(--gold);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #f39a1f, #ffd76b);
+  box-shadow: 0 0 12px rgba(255, 201, 74, 0.6);
+  transition: width 0.18s ease;
+}
+
+.progress-label {
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Buffs / powerbar ---------- */
+
+.buff-bar {
+  position: absolute;
+  top: calc(var(--safe-top) + 102px);
+  left: 12px;
+  z-index: 21;
+  display: flex;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.buff {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 9px;
+  border-radius: 99px;
+  background: rgba(255, 120, 170, 0.16);
+  border: 1px solid rgba(255, 150, 190, 0.38);
+  color: #ffd2e2;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  animation: buffIn 0.22s ease-out;
+}
+
+.buff .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.powerbar {
+  position: absolute;
+  left: 12px;
+  bottom: calc(var(--safe-bottom) + 12px);
+  z-index: 22;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.power-btn {
+  position: relative;
+  min-width: 98px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border-radius: 17px;
+  border: 1px solid rgba(255, 201, 74, 0.3);
+  background: linear-gradient(180deg, rgba(56, 35, 21, 0.94), rgba(26, 15, 8, 0.94));
+  color: var(--cream);
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.power-btn:active {
+  transform: scale(0.96);
+}
+
+.power-btn.empty {
+  opacity: 0.55;
+}
+
+.power-ico {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: rgba(231, 91, 69, 0.16);
+  color: #ff8b6b;
+}
+
+.power-ico .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.power-text {
+  display: grid;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.power-text b {
+  font-size: 13px;
+}
+
+.power-text small {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.power-count {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  min-width: 23px;
+  height: 23px;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, #ffe17b, #ffbe35);
+  color: #3a2207;
+  border: 2px solid #24150c;
+  font-size: 12px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.inv-chip {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(26, 15, 8, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+}
+
+.inv-chip .icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.75;
+}
+
+.inv-chip b {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: #2c1a0f;
+  border: 1px solid rgba(255, 201, 74, 0.3);
+  color: var(--cream);
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Overlays and panels ---------- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--safe-top) + 14px) 16px calc(var(--safe-bottom) + 14px);
+  background: radial-gradient(circle at 50% 32%, rgba(65, 37, 19, 0.7), rgba(6, 4, 3, 0.93));
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.panel {
+  width: min(100%, 420px);
+  max-height: 100%;
+  overflow: auto;
+  padding: 22px;
+  border-radius: 26px;
+  background: linear-gradient(165deg, rgba(58, 36, 21, 0.98), rgba(29, 17, 10, 0.99));
+  border: 1px solid rgba(255, 201, 74, 0.27);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  scrollbar-width: none;
+}
+
+.panel::-webkit-scrollbar {
+  display: none;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.brand-mark {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 10px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 28%, #fff2bd, #ffc94a 46%, #c7831d 100%);
+  box-shadow:
+    0 14px 34px rgba(255, 178, 47, 0.28),
+    inset 0 2px 2px rgba(255, 255, 255, 0.55),
+    inset 0 -4px 8px rgba(120, 70, 8, 0.3);
+  transform: rotate(-6deg);
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  color: #6b3d08;
+  transform: rotate(6deg);
+}
+
+.start-panel {
+  text-align: center;
+  padding-top: 26px;
+}
+
+.brand-title {
+  margin: 5px 0 2px;
+  font-size: clamp(34px, 9vw, 46px);
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  background: linear-gradient(180deg, #fff9df, #ffc94a 55%, #e28b17);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 10px rgba(255, 170, 40, 0.2));
+}
+
+.brand-sub {
+  margin: 2px 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+}
+
+.best-card {
+  width: fit-content;
+  margin: 0 auto 16px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 201, 74, 0.15);
+}
+
+.best-card span {
+  display: block;
+  text-align: left;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.best-card strong {
+  color: var(--gold);
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.best-card small {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.best-card small b {
+  display: inline;
+  color: var(--cream);
+  font-size: 9px;
+}
+
+.best-star {
+  width: 23px;
+  height: 23px;
+  color: var(--gold);
+}
+
+.rule-list {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.rule-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rule-ico {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 201, 74, 0.12);
+  color: var(--gold);
+}
+
+.rule-ico .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.rule-list b {
+  display: block;
+  font-size: 13px;
+}
+
+.rule-list small {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.btn {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible,
+.icon-btn:focus-visible,
+.power-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #ffdf7b, #ffbe35 48%, #e79a18);
+  color: #3a2207;
+  box-shadow:
+    0 9px 24px rgba(255, 178, 47, 0.27),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 201, 74, 0.22);
+  color: var(--cream);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-row .btn {
+  flex: 1;
+}
+
+.fineprint {
+  margin: 12px 0 0;
+  color: rgba(203, 180, 143, 0.68);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.compact-panel {
+  text-align: center;
+  padding: 26px 24px;
+}
+
+.compact-panel h2 {
+  margin: 10px 0 4px;
+  font-size: 28px;
+}
+
+.panel-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 201, 74, 0.12);
+  border: 1px solid rgba(255, 201, 74, 0.28);
+  color: var(--gold);
+}
+
+.panel-icon .icon {
+  width: 28px;
+  height: 28px;
+}
+
+.muted-text {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.compact-panel .btn-block + .btn-block {
+  margin-top: 9px;
+}
+
+/* ---------- Result ---------- */
+
+.result-panel {
+  text-align: center;
+}
+
+.result-icon {
+  width: 64px;
+  height: 64px;
+  margin: 6px auto;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 201, 74, 0.13);
+  border: 1px solid rgba(255, 201, 74, 0.32);
+  color: var(--gold);
+  box-shadow: 0 0 30px rgba(255, 201, 74, 0.12);
+}
+
+.result-icon.fail {
+  background: rgba(231, 91, 69, 0.13);
+  border-color: rgba(231, 91, 69, 0.34);
+  color: #ff927e;
+  box-shadow: 0 0 30px rgba(231, 91, 69, 0.12);
+}
+
+.result-icon .icon {
+  width: 34px;
+  height: 34px;
+}
+
+.result-panel h2 {
+  margin: 2px 0 4px;
+  font-size: 30px;
+  letter-spacing: 0.04em;
+}
+
+.result-sub {
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.stat-grid div {
+  padding: 9px 10px;
+  border-radius: 13px;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.stat-grid b {
+  display: block;
+  margin-top: 1px;
+  color: var(--cream);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Shop ---------- */
+
+.shop-panel {
+  padding: 20px;
+}
+
+.shop-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.shop-head h2 {
+  margin: 3px 0 0;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+}
+
+.wallet {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px solid var(--line);
+  text-align: right;
+}
+
+.wallet span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.wallet b {
+  color: var(--gold);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.shop-list {
+  display: grid;
+  gap: 8px;
+}
+
+.shop-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.shop-ico {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 201, 74, 0.1);
+  color: var(--gold);
+}
+
+.shop-ico .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.tnt-ico {
+  color: #ff8b6b;
+  background: rgba(231, 91, 69, 0.12);
+}
+
+.potion-ico {
+  color: #ff9fc0;
+  background: rgba(255, 120, 170, 0.12);
+}
+
+.clover-ico {
+  color: var(--green);
+  background: rgba(123, 216, 143, 0.12);
+}
+
+.shop-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.shop-info > b {
+  display: block;
+  font-size: 14px;
+}
+
+.shop-info small {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.shop-info span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(203, 180, 143, 0.72);
+  font-size: 9px;
+}
+
+.shop-info span b {
+  display: inline;
+  color: var(--cream);
+  font-size: 10px;
+}
+
+.btn-buy {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 201, 74, 0.35);
+  background: rgba(255, 201, 74, 0.13);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-buy:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.shop-note {
+  margin: 12px 0 4px;
+  color: rgba(203, 180, 143, 0.7);
+  font-size: 10px;
+  text-align: center;
+}
+
+/* ---------- Toast ---------- */
+
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + 92px);
+  z-index: 35;
+  max-width: 82%;
+  padding: 8px 14px;
+  border-radius: 99px;
+  background: rgba(20, 12, 7, 0.94);
+  border: 1px solid rgba(255, 201, 74, 0.35);
+  color: var(--cream);
+  font-size: 12px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.04);
+    filter: brightness(1.14);
+  }
+}
+
+@keyframes buffIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.94);
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (min-width: 700px) {
+  .stage {
+    height: min(94dvh, 980px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 201, 74, 0.12);
+  }
+}
+
+@media (orientation: landscape) {
+  .stage {
+    width: min(100vw, 620px, calc(100dvh * 0.72));
+    height: 100dvh;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 340px) {
+  .hud {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .hud-top,
+  .hud-bottom,
+  .hud-left,
+  .hud-actions {
+    gap: 5px;
+  }
+
+  .level-pill span,
+  .target-pill span {
+    display: none;
+  }
+
+  .pill {
+    padding: 0 7px;
+  }
+
+  .timer-pill {
+    min-width: 70px;
+    font-size: 15px;
+    padding: 0 7px;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .money-pill {
+    min-width: 76px;
+    padding: 0 8px;
+  }
+
+  .money-pill span {
+    display: none;
+  }
+
+  .panel {
+    padding: 17px;
+  }
+}
+
+@media (max-height: 720px) {
+  .brand-mark {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 6px;
+    border-radius: 19px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-title {
+    font-size: 31px;
+  }
+
+  .brand-sub {
+    margin-bottom: 10px;
+  }
+
+  .best-card {
+    margin-bottom: 10px;
+    padding: 6px 13px;
+  }
+
+  .rule-list {
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .rule-list li {
+    padding: 7px 9px;
+  }
+
+  .fineprint {
+    display: none;
+  }
+
+  .stat-grid div {
+    padding: 7px 9px;
+  }
+
+  .shop-panel {
+    padding: 16px;
+  }
+
+  .shop-item {
+    padding: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+  <meta name="gold-miner-single" content="1">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 7.5v5l3.2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24">
+      <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/>
+      <path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.2 6.6a7.6 7.6 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-muted" viewBox="0 0 24 24">
+      <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/>
+      <path d="m15.5 9.5 5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24">
+      <rect x="7" y="5" width="3.6" height="14" rx="1.2" fill="currentColor"/>
+      <rect x="13.4" y="5" width="3.6" height="14" rx="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24">
+      <path d="M8 5.5v13l10-6.5z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-nugget" viewBox="0 0 24 24">
+      <path d="M7.2 5.4 14.8 3l4.4 4.2-1.3 7.8-6.4 5-6.9-3.2L3 9.2z" fill="currentColor"/>
+      <path d="m8.2 8.1 5.2-2.1 3.4 2-1 4.6-4.2 2.9-3.3-2z" fill="#fff4c4" opacity=".55"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="m12 3 2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-tnt" viewBox="0 0 24 24">
+      <rect x="4.5" y="8" width="15" height="11" rx="2" fill="currentColor"/>
+      <path d="M8 8V6.2h8V8" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M16 6c0-2 1.8-2.3 1.8-3.6" fill="none" stroke="#ffb23f" stroke-width="2" stroke-linecap="round"/>
+      <text x="12" y="16" text-anchor="middle" font-size="5.2" font-weight="800" fill="#fff6da">TNT</text>
+    </symbol>
+    <symbol id="i-potion" viewBox="0 0 24 24">
+      <path d="M9.5 3h5v3.3l2.2 3.4c1.1 1.7 1.6 2.8 1.6 4.6A5.3 5.3 0 0 1 13 19.6h-2A5.3 5.3 0 0 1 5.7 14.3c0-1.8.5-2.9 1.6-4.6l2.2-3.4z" fill="currentColor"/>
+      <path d="M7.4 13.2h9.2c.5 3.1-1.5 5-4.6 5s-5.1-1.9-4.6-5z" fill="#fff0f4" opacity=".75"/>
+      <path d="m12.2 9.2-1.7 3h2l-1.4 2.7 3.3-3.6h-2z" fill="#fff9d8"/>
+    </symbol>
+    <symbol id="i-clover" viewBox="0 0 24 24">
+      <path d="M12 11.2C9.7 6.6 5 6 5 9.3c0 2 1.9 3 3.8 3-2.6.5-3.6 3.5-1.2 4.7 1.8.9 3.3-.7 4.4-2.1 1.1 1.4 2.6 3 4.4 2.1 2.4-1.2 1.4-4.2-1.2-4.7 1.9 0 3.8-1 3.8-3 0-3.3-4.7-2.7-7 1.9z" fill="currentColor"/>
+      <path d="M12 14.5c0 2.8.8 4.7 3 6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24">
+      <path d="M4.5 8.5h15l-1.1 11h-12.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M8.5 9V7a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-restart" viewBox="0 0 24 24">
+      <path d="M19 8.5A8 8 0 1 0 20 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M19 4.5v5h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <main id="app">
+    <div class="stage" id="stage">
+      <canvas id="game" role="img" aria-label="黄金矿工游戏画面：矿工在矿洞上方，钩子左右摆动"></canvas>
+      <div class="vignette" aria-hidden="true"></div>
+
+      <header class="hud" aria-label="游戏状态">
+        <div class="hud-top">
+          <div class="hud-left">
+            <div class="pill level-pill"><span>第</span><b id="levelValue">1</b><span>关</span></div>
+            <div class="pill target-pill"><span>目标</span><b id="targetValue">¥650</b></div>
+          </div>
+          <div class="timer-pill" id="timerBox">
+            <svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>
+            <span id="timeValue">1:00</span>
+          </div>
+          <div class="hud-actions">
+            <button class="icon-btn" id="soundBtn" type="button" aria-label="关闭音效" aria-pressed="false">
+              <svg class="icon" aria-hidden="true"><use id="soundIconUse" href="#i-sound"></use></svg>
+            </button>
+            <button class="icon-btn" id="pauseBtn" type="button" aria-label="暂停游戏">
+              <svg class="icon" aria-hidden="true"><use href="#i-pause"></use></svg>
+            </button>
+          </div>
+        </div>
+        <div class="hud-bottom">
+          <div class="money-pill"><span>金币</span><b id="moneyValue">¥0</b></div>
+          <div class="progress-wrap">
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <span class="progress-label" id="progressLabel">¥0 / ¥650</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="buff-bar" id="buffBar" aria-live="polite"></div>
+
+      <div class="powerbar" aria-label="道具栏">
+        <button class="power-btn" id="tntBtn" type="button" aria-label="使用炸药清除场上所有石头">
+          <span class="power-ico"><svg class="icon" aria-hidden="true"><use href="#i-tnt"></use></svg></span>
+          <span class="power-text"><b>炸药</b><small>清场</small></span>
+          <span class="power-count" id="tntCount">0</span>
+        </button>
+        <div class="inv-chip" title="力量饮料：下一关开局自动生效">
+          <svg class="icon" aria-hidden="true"><use href="#i-potion"></use></svg>
+          <b id="strengthCount">0</b>
+        </div>
+        <div class="inv-chip" title="幸运草：下一关开局自动生效">
+          <svg class="icon" aria-hidden="true"><use href="#i-clover"></use></svg>
+          <b id="cloverCount">0</b>
+        </div>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+      <section class="overlay is-visible" id="startScreen" aria-label="开始界面">
+        <div class="panel start-panel">
+          <div class="brand-mark"><svg class="brand-icon" aria-hidden="true"><use href="#i-nugget"></use></svg></div>
+          <p class="eyebrow">GOLD MINER</p>
+          <h1 class="brand-title">黄金矿工</h1>
+          <p class="brand-sub">矿脉深处 · 限时寻宝</p>
+          <div class="best-card">
+            <svg class="icon best-star" aria-hidden="true"><use href="#i-star"></use></svg>
+            <div><span>历史最高</span><strong id="bestScoreStart">¥0</strong><small>最高通关 第 <b id="bestLevelStart">1</b> 关</small></div>
+          </div>
+          <ul class="rule-list">
+            <li><span class="rule-ico"><svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></span><div><b>点击发射</b><small>钩子自动摆动，看准再下手</small></div></li>
+            <li><span class="rule-ico"><svg class="icon" aria-hidden="true"><use href="#i-nugget"></use></svg></span><div><b>越重越慢</b><small>钻石轻、石头沉，先挑值钱的</small></div></li>
+            <li><span class="rule-ico"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></span><div><b>达标过关</b><small>60 秒内挖够目标金额</small></div></li>
+          </ul>
+          <button class="btn btn-primary btn-block" id="startBtn" type="button">开始挖矿</button>
+          <p class="fineprint">可离线游玩 · 支持添加到主屏幕</p>
+        </div>
+      </section>
+
+      <section class="overlay" id="pauseScreen" aria-label="暂停界面">
+        <div class="panel compact-panel">
+          <div class="panel-icon"><svg class="icon" aria-hidden="true"><use href="#i-pause"></use></svg></div>
+          <h2>暂停中</h2>
+          <p class="muted-text">喘口气，矿脉不会跑。</p>
+          <button class="btn btn-primary btn-block" id="resumeBtn" type="button">继续挖矿</button>
+          <button class="btn btn-ghost btn-block" id="restartFromPauseBtn" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-restart"></use></svg>重新开始
+          </button>
+        </div>
+      </section>
+
+      <section class="overlay" id="resultScreen" aria-label="关卡结算">
+        <div class="panel result-panel">
+          <p class="eyebrow" id="resultEyebrow">第 1 关结算</p>
+          <div class="result-icon" id="resultIcon"><svg class="icon" aria-hidden="true"><use id="resultIconUse" href="#i-star"></use></svg></div>
+          <h2 id="resultTitle">达标！</h2>
+          <p class="result-sub" id="resultSub">矿脉向你低头。</p>
+          <div class="stat-grid">
+            <div><span>本关收入</span><b id="resultEarned">¥0</b></div>
+            <div><span>总金币</span><b id="resultTotal">¥0</b></div>
+            <div><span>本关目标</span><b id="resultTarget">¥650</b></div>
+            <div><span>历史最高</span><b id="resultBest">¥0</b></div>
+          </div>
+          <div class="btn-row" id="winActions">
+            <button class="btn btn-ghost" id="shopBtn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-shop"></use></svg>逛商店</button>
+            <button class="btn btn-primary" id="nextLevelBtn" type="button">下一关<svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+          </div>
+          <div class="btn-row hidden" id="failActions">
+            <button class="btn btn-primary btn-block" id="retryBtn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-restart"></use></svg>再来一局</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="overlay" id="shopScreen" aria-label="矿工补给站">
+        <div class="panel shop-panel">
+          <div class="shop-head">
+            <div><p class="eyebrow">矿工补给站</p><h2>下矿前，补给一下</h2></div>
+            <div class="wallet"><span>金币</span><b id="shopMoney">¥0</b></div>
+          </div>
+          <div class="shop-list">
+            <article class="shop-item">
+              <div class="shop-ico tnt-ico"><svg class="icon" aria-hidden="true"><use href="#i-tnt"></use></svg></div>
+              <div class="shop-info"><b>炸药</b><small>随时清除场上所有石头</small><span>持有 <b id="shopTntCount">0</b></span></div>
+              <button class="btn btn-buy" type="button" data-buy="tnt" data-price="150" aria-label="购买炸药，150 金币">¥150</button>
+            </article>
+            <article class="shop-item">
+              <div class="shop-ico potion-ico"><svg class="icon" aria-hidden="true"><use href="#i-potion"></use></svg></div>
+              <div class="shop-info"><b>力量饮料</b><small>下一关开局 8 秒快速回收</small><span>持有 <b id="shopStrengthCount">0</b></span></div>
+              <button class="btn btn-buy" type="button" data-buy="strength" data-price="120" aria-label="购买力量饮料，120 金币">¥120</button>
+            </article>
+            <article class="shop-item">
+              <div class="shop-ico clover-ico"><svg class="icon" aria-hidden="true"><use href="#i-clover"></use></svg></div>
+              <div class="shop-info"><b>幸运草</b><small>下一关开局获得随机金币</small><span>持有 <b id="shopCloverCount">0</b></span></div>
+              <button class="btn btn-buy" type="button" data-buy="clover" data-price="90" aria-label="购买幸运草，90 金币">¥90</button>
+            </article>
+          </div>
+          <p class="shop-note">力量饮料与幸运草会在下一关开局自动生效。</p>
+          <button class="btn btn-primary btn-block" id="continueFromShopBtn" type="button">带着补给下矿<svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) {
+    module.exports = api;
+  }
+  if (root) {
+    root.GoldMinerCore = api;
+  }
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+  "use strict";
+
+  const SAVE_KEY = "goldMinerSave.v1";
+  const WORLD_WIDTH = 540;
+  const LEVEL_SECONDS = 60;
+  const BUFF_SECONDS = 8;
+
+  const ITEM_DEFS = Object.freeze({
+    goldS: { label: "小金块", kind: "gold", value: 55, weight: 0.8, radius: 17 },
+    goldM: { label: "金块", kind: "gold", value: 110, weight: 1.5, radius: 24 },
+    goldL: { label: "大金块", kind: "gold", value: 210, weight: 2.8, radius: 33 },
+    rockS: { label: "小石头", kind: "rock", value: 12, weight: 3.2, radius: 22 },
+    rockL: { label: "大石头", kind: "rock", value: 20, weight: 4.8, radius: 32 },
+    diamond: { label: "钻石", kind: "diamond", value: 400, weight: 0.45, radius: 16 },
+    tnt: { label: "炸药包", kind: "tnt", value: 40, weight: 0.9, radius: 19 },
+    clover: { label: "幸运草", kind: "clover", value: 0, weight: 0.4, radius: 17 },
+    strength: { label: "力量饮料", kind: "strength", value: 0, weight: 0.4, radius: 17 }
+  });
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function levelTarget(level) {
+    const safeLevel = Math.max(1, Math.floor(Number(level) || 1));
+    return 650 + 450 * (safeLevel - 1);
+  }
+
+  function retrieveSpeed(weight, strengthActive) {
+    const safeWeight = Math.max(0.1, Number(weight) || 0.1);
+    const base = 620 / (0.35 + safeWeight * 0.65);
+    const boosted = strengthActive ? base * 1.7 : base;
+    return Math.round(clamp(boosted, 130, 950));
+  }
+
+  function mulberry32(seed) {
+    let state = seed >>> 0;
+    return function random() {
+      state = (state + 0x6d2b79f5) >>> 0;
+      let t = state;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function pickWeighted(entries, random) {
+    const total = entries.reduce(function (sum, entry) {
+      return sum + entry[1];
+    }, 0);
+    let roll = random() * total;
+    for (let i = 0; i < entries.length; i += 1) {
+      roll -= entries[i][1];
+      if (roll <= 0) return entries[i][0];
+    }
+    return entries[entries.length - 1][0];
+  }
+
+  function goldMix(level, random) {
+    if (level >= 6) {
+      return pickWeighted(
+        [
+          ["goldS", 0.28],
+          ["goldM", 0.4],
+          ["goldL", 0.32]
+        ],
+        random
+      );
+    }
+    if (level >= 3) {
+      return pickWeighted(
+        [
+          ["goldS", 0.42],
+          ["goldM", 0.38],
+          ["goldL", 0.2]
+        ],
+        random
+      );
+    }
+    return pickWeighted(
+      [
+        ["goldS", 0.58],
+        ["goldM", 0.32],
+        ["goldL", 0.1]
+      ],
+      random
+    );
+  }
+
+  function planValue(plan) {
+    return plan.reduce(function (sum, type) {
+      return sum + (ITEM_DEFS[type] ? ITEM_DEFS[type].value : 0);
+    }, 0);
+  }
+
+  function makeItemPlan(level, random) {
+    const safeLevel = Math.max(1, Math.floor(Number(level) || 1));
+    const rng = typeof random === "function" ? random : Math.random;
+    const plan = [];
+
+    const goldCount = Math.min(13, 6 + Math.floor((safeLevel - 1) * 0.7));
+    const rockCount = Math.min(6, 2 + Math.floor((safeLevel - 1) / 2));
+    const diamondCount = Math.min(4, 1 + Math.floor((safeLevel - 1) / 3));
+    const powerupCount = Math.min(3, 1 + Math.floor((safeLevel - 1) / 4));
+
+    for (let i = 0; i < goldCount; i += 1) plan.push(goldMix(safeLevel, rng));
+    for (let i = 0; i < rockCount; i += 1) plan.push(rng() < 0.55 ? "rockS" : "rockL");
+    for (let i = 0; i < diamondCount; i += 1) plan.push("diamond");
+    for (let i = 0; i < powerupCount; i += 1) {
+      plan.push(
+        pickWeighted(
+          [
+            ["tnt", 0.42],
+            ["clover", 0.32],
+            ["strength", 0.26]
+          ],
+          rng
+        )
+      );
+    }
+
+    const target = levelTarget(safeLevel);
+    const requiredValue = Math.round(target * 1.28);
+    let cursor = 0;
+    let guard = 0;
+    while (planValue(plan) < requiredValue && guard < 40) {
+      guard += 1;
+      const rockIndex = plan.indexOf("rockS", cursor);
+      const bigRockIndex = plan.indexOf("rockL", cursor);
+      const replaceIndex = rockIndex >= 0 ? rockIndex : bigRockIndex;
+      const rockCount = plan.filter(function (type) {
+        return type === "rockS" || type === "rockL";
+      }).length;
+      if (replaceIndex >= 0 && rockCount > 2) {
+        plan[replaceIndex] = rng() < 0.5 ? "goldM" : "goldL";
+        cursor = replaceIndex + 1;
+      } else {
+        plan.push("goldM");
+        cursor = 0;
+      }
+    }
+
+    return plan;
+  }
+
+  function isOverlapping(candidate, placed, gap) {
+    return placed.some(function (other) {
+      const dx = candidate.x - other.x;
+      const dy = candidate.y - other.y;
+      return Math.hypot(dx, dy) < candidate.r + other.r + gap;
+    });
+  }
+
+  function placeItems(plan, bounds, random) {
+    const rng = typeof random === "function" ? random : Math.random;
+    const placed = [];
+    const minX = Number(bounds.minX) || 0;
+    const maxX = Number(bounds.maxX) || WORLD_WIDTH;
+    const minY = Number(bounds.minY) || 0;
+    const maxY = Number(bounds.maxY) || 900;
+
+    plan.forEach(function (type) {
+      const def = ITEM_DEFS[type];
+      if (!def) return;
+      const r = def.radius;
+      const innerMinX = minX + r + 4;
+      const innerMaxX = Math.max(innerMinX, maxX - r - 4);
+      const innerMinY = minY + r + 4;
+      const innerMaxY = Math.max(innerMinY, maxY - r - 4);
+      let found = null;
+
+      for (let attempt = 0; attempt < 280; attempt += 1) {
+        const candidate = {
+          x: innerMinX + rng() * (innerMaxX - innerMinX),
+          y: innerMinY + rng() * (innerMaxY - innerMinY),
+          r: r
+        };
+        if (!isOverlapping(candidate, placed, 8)) {
+          found = candidate;
+          break;
+        }
+      }
+
+      if (!found) {
+        for (let y = innerMinY; y <= innerMaxY && !found; y += 14) {
+          for (let x = innerMinX; x <= innerMaxX && !found; x += 14) {
+            const candidate = { x: x, y: y, r: r };
+            if (!isOverlapping(candidate, placed, 2)) found = candidate;
+          }
+        }
+      }
+
+      if (!found) {
+        const fallback = {
+          x: clamp(minX + r + (placed.length % 6) * (r + 10), minX + r, maxX - r),
+          y: clamp(minY + r + Math.floor(placed.length / 6) * (r + 12), minY + r, maxY - r),
+          r: r
+        };
+        found = fallback;
+      }
+
+      placed.push({ type: type, x: found.x, y: found.y, r: r });
+    });
+
+    return placed;
+  }
+
+  function sanitizeSave(raw) {
+    const defaults = { bestScore: 0, bestLevel: 1, muted: false };
+    let data = raw;
+    if (typeof data === "string") {
+      try {
+        data = JSON.parse(data);
+      } catch (error) {
+        return defaults;
+      }
+    }
+    if (!data || typeof data !== "object" || Array.isArray(data)) return defaults;
+
+    const score = Number(data.bestScore);
+    const level = Number(data.bestLevel);
+    return {
+      bestScore: Number.isFinite(score) ? clamp(Math.floor(score), 0, 999999999) : 0,
+      bestLevel: Number.isFinite(level) ? clamp(Math.floor(level), 1, 999) : 1,
+      muted: typeof data.muted === "boolean" ? data.muted : false
+    };
+  }
+
+  function formatTime(seconds) {
+    const safe = Math.max(0, Math.ceil(Number(seconds) || 0));
+    const minutes = Math.floor(safe / 60);
+    const rest = safe % 60;
+    return String(minutes) + ":" + String(rest).padStart(2, "0");
+  }
+
+  function randomReward(random) {
+    const rng = typeof random === "function" ? random : Math.random;
+    return 80 + Math.floor(rng() * 161);
+  }
+
+  return {
+    SAVE_KEY: SAVE_KEY,
+    WORLD_WIDTH: WORLD_WIDTH,
+    LEVEL_SECONDS: LEVEL_SECONDS,
+    BUFF_SECONDS: BUFF_SECONDS,
+    ITEM_DEFS: ITEM_DEFS,
+    clamp: clamp,
+    levelTarget: levelTarget,
+    retrieveSpeed: retrieveSpeed,
+    mulberry32: mulberry32,
+    pickWeighted: pickWeighted,
+    planValue: planValue,
+    makeItemPlan: makeItemPlan,
+    placeItems: placeItems,
+    sanitizeSave: sanitizeSave,
+    formatTime: formatTime,
+    randomReward: randomReward
+  };
+});
+
+</script>
+  <script>
+(function () {
+  "use strict";
+
+  const C = window.GoldMinerCore;
+  if (!C) {
+    document.body.innerHTML = "<p style='color:#fff;font:16px sans-serif;padding:24px'>游戏核心加载失败，请刷新页面。</p>";
+    return;
+  }
+
+  const W = C.WORLD_WIDTH;
+  const PIVOT_Y = 208;
+  const HOOK_MIN = 58;
+  const MAX_ANGLE = 1.31;
+  const SHOOT_SPEED = 920;
+  const EMPTY_RETURN_SPEED = 880;
+  const ITEM_START_Y = 272;
+  const numberFormat = new Intl.NumberFormat("zh-CN");
+
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  const els = {
+    stage: $("stage"),
+    canvas: $("game"),
+    levelValue: $("levelValue"),
+    targetValue: $("targetValue"),
+    timeValue: $("timeValue"),
+    moneyValue: $("moneyValue"),
+    timerBox: $("timerBox"),
+    progressFill: $("progressFill"),
+    progressLabel: $("progressLabel"),
+    soundBtn: $("soundBtn"),
+    soundIconUse: $("soundIconUse"),
+    pauseBtn: $("pauseBtn"),
+    tntBtn: $("tntBtn"),
+    tntCount: $("tntCount"),
+    strengthCount: $("strengthCount"),
+    cloverCount: $("cloverCount"),
+    buffBar: $("buffBar"),
+    toast: $("toast"),
+    startScreen: $("startScreen"),
+    pauseScreen: $("pauseScreen"),
+    resultScreen: $("resultScreen"),
+    shopScreen: $("shopScreen"),
+    bestScoreStart: $("bestScoreStart"),
+    bestLevelStart: $("bestLevelStart"),
+    startBtn: $("startBtn"),
+    resumeBtn: $("resumeBtn"),
+    restartFromPauseBtn: $("restartFromPauseBtn"),
+    resultEyebrow: $("resultEyebrow"),
+    resultIcon: $("resultIcon"),
+    resultIconUse: $("resultIconUse"),
+    resultTitle: $("resultTitle"),
+    resultSub: $("resultSub"),
+    resultEarned: $("resultEarned"),
+    resultTotal: $("resultTotal"),
+    resultTarget: $("resultTarget"),
+    resultBest: $("resultBest"),
+    winActions: $("winActions"),
+    failActions: $("failActions"),
+    shopBtn: $("shopBtn"),
+    nextLevelBtn: $("nextLevelBtn"),
+    retryBtn: $("retryBtn"),
+    shopMoney: $("shopMoney"),
+    shopTntCount: $("shopTntCount"),
+    shopStrengthCount: $("shopStrengthCount"),
+    shopCloverCount: $("shopCloverCount"),
+    continueFromShopBtn: $("continueFromShopBtn")
+  };
+
+  const ctx = els.canvas.getContext("2d", { alpha: false });
+  const bgCanvas = document.createElement("canvas");
+  const bgCtx = bgCanvas.getContext("2d", { alpha: false });
+  let H = 900;
+  let dpr = 1;
+
+  const game = {
+    mode: "menu",
+    level: 1,
+    money: 0,
+    levelEarned: 0,
+    target: C.levelTarget(1),
+    timeLeft: C.LEVEL_SECONDS,
+    timeUp: false,
+    strength: 0,
+    inventory: { tnt: 0, strength: 0, clover: 0 },
+    items: [],
+    particles: [],
+    floaters: [],
+    shake: { time: 0, power: 0 },
+    hook: {
+      angle: 0,
+      dir: 1,
+      speed: 1.15,
+      length: HOOK_MIN,
+      maxLength: 1000,
+      state: "swing",
+      item: null
+    },
+    lastFrame: 0,
+    elapsed: 0,
+    lastTimeShown: null,
+    toastTimer: 0
+  };
+
+  function loadSave() {
+    try {
+      return C.sanitizeSave(window.localStorage.getItem(C.SAVE_KEY));
+    } catch (error) {
+      return C.sanitizeSave(null);
+    }
+  }
+
+  let save = loadSave();
+
+  function persist() {
+    try {
+      window.localStorage.setItem(C.SAVE_KEY, JSON.stringify(save));
+    } catch (error) {
+      /* 隐私模式或存储被禁用时，游戏仅保留内存状态。 */
+    }
+  }
+
+  function moneyText(value) {
+    return "¥" + numberFormat.format(Math.max(0, Math.round(Number(value) || 0)));
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function randomBetween(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  const Sound = {
+    ctx: null,
+    ensure: function () {
+      try {
+        if (!this.ctx) {
+          const AudioCtor = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtor) return null;
+          this.ctx = new AudioCtor();
+        }
+        if (this.ctx.state === "suspended") {
+          this.ctx.resume().catch(function () {});
+        }
+        return this.ctx;
+      } catch (error) {
+        return null;
+      }
+    },
+    tone: function (options) {
+      if (save.muted) return;
+      const ac = this.ensure();
+      if (!ac) return;
+      try {
+        const start = ac.currentTime + (options.delay || 0);
+        const duration = options.dur || 0.12;
+        const osc = ac.createOscillator();
+        const gain = ac.createGain();
+        osc.type = options.type || "sine";
+        osc.frequency.setValueAtTime(Math.max(20, options.freq || 440), start);
+        if (options.endFreq) {
+          osc.frequency.exponentialRampToValueAtTime(Math.max(20, options.endFreq), start + duration);
+        }
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(Math.max(0.001, options.gain || 0.08), start + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+        osc.connect(gain);
+        gain.connect(ac.destination);
+        osc.start(start);
+        osc.stop(start + duration + 0.03);
+      } catch (error) {
+        /* 音频失败不影响玩法。 */
+      }
+    },
+    noise: function (duration, gainValue, cutoff) {
+      if (save.muted) return;
+      const ac = this.ensure();
+      if (!ac) return;
+      try {
+        const length = Math.floor(ac.sampleRate * duration);
+        const buffer = ac.createBuffer(1, length, ac.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < length; i += 1) {
+          data[i] = (Math.random() * 2 - 1) * (1 - i / length);
+        }
+        const source = ac.createBufferSource();
+        const filter = ac.createBiquadFilter();
+        const gain = ac.createGain();
+        source.buffer = buffer;
+        filter.type = "lowpass";
+        filter.frequency.value = cutoff || 900;
+        gain.gain.setValueAtTime(gainValue || 0.2, ac.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + duration);
+        source.connect(filter);
+        filter.connect(gain);
+        gain.connect(ac.destination);
+        source.start();
+      } catch (error) {
+        /* 忽略音频错误。 */
+      }
+    },
+    shoot: function () {
+      this.tone({ freq: 660, endFreq: 190, dur: 0.16, type: "triangle", gain: 0.055 });
+    },
+    grab: function () {
+      this.tone({ freq: 920, endFreq: 520, dur: 0.1, type: "square", gain: 0.045 });
+    },
+    coin: function () {
+      this.tone({ freq: 880, dur: 0.09, type: "sine", gain: 0.06 });
+      this.tone({ freq: 1320, dur: 0.14, type: "sine", gain: 0.055, delay: 0.07 });
+    },
+    explosion: function () {
+      this.noise(0.45, 0.2, 780);
+      this.tone({ freq: 95, endFreq: 34, dur: 0.42, type: "sawtooth", gain: 0.1 });
+    },
+    win: function () {
+      [523, 659, 784, 1047].forEach(function (freq, index) {
+        Sound.tone({ freq: freq, dur: 0.26, type: "triangle", gain: 0.06, delay: index * 0.09 });
+      });
+    },
+    fail: function () {
+      this.tone({ freq: 320, endFreq: 110, dur: 0.62, type: "sawtooth", gain: 0.07 });
+    },
+    click: function () {
+      this.tone({ freq: 540, dur: 0.05, type: "square", gain: 0.03 });
+    },
+    error: function () {
+      this.tone({ freq: 190, endFreq: 120, dur: 0.16, type: "square", gain: 0.045 });
+    }
+  };
+
+  function vibrate(pattern) {
+    try {
+      if (navigator.vibrate) navigator.vibrate(pattern);
+    } catch (error) {
+      /* 不支持振动的设备直接跳过。 */
+    }
+  }
+
+  function updateSoundButton() {
+    els.soundIconUse.setAttribute("href", save.muted ? "#i-muted" : "#i-sound");
+    els.soundBtn.setAttribute("aria-pressed", String(save.muted));
+    els.soundBtn.setAttribute("aria-label", save.muted ? "开启音效" : "关闭音效");
+  }
+
+  const buffChip = document.createElement("div");
+  buffChip.className = "buff hidden";
+  buffChip.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-potion"></use></svg><span></span>';
+  const buffText = buffChip.querySelector("span");
+  els.buffBar.appendChild(buffChip);
+
+  function showToast(message, duration) {
+    window.clearTimeout(game.toastTimer);
+    els.toast.textContent = message;
+    els.toast.classList.add("show");
+    game.toastTimer = window.setTimeout(function () {
+      els.toast.classList.remove("show");
+    }, duration || 1600);
+  }
+
+  function showScreen(name) {
+    const map = {
+      start: els.startScreen,
+      pause: els.pauseScreen,
+      result: els.resultScreen,
+      shop: els.shopScreen
+    };
+    Object.keys(map).forEach(function (key) {
+      map[key].classList.toggle("is-visible", key === name);
+    });
+  }
+
+  function hideScreens() {
+    [els.startScreen, els.pauseScreen, els.resultScreen, els.shopScreen].forEach(function (screen) {
+      screen.classList.remove("is-visible");
+    });
+  }
+
+  function updateHud() {
+    els.levelValue.textContent = String(game.level);
+    els.targetValue.textContent = moneyText(game.target);
+    els.moneyValue.textContent = moneyText(game.money);
+    const progress = clamp(game.target > 0 ? game.levelEarned / game.target : 0, 0, 1);
+    els.progressFill.style.width = (progress * 100).toFixed(1) + "%";
+    els.progressLabel.textContent = "本关 " + moneyText(game.levelEarned) + " / " + moneyText(game.target);
+
+    const seconds = Math.ceil(game.timeLeft);
+    if (game.lastTimeShown !== seconds) {
+      game.lastTimeShown = seconds;
+      els.timeValue.textContent = C.formatTime(game.timeLeft);
+    }
+    els.timerBox.classList.toggle("warning", game.mode === "playing" && game.timeLeft <= 10 && game.timeLeft > 0);
+
+    els.tntCount.textContent = String(game.inventory.tnt);
+    els.strengthCount.textContent = String(game.inventory.strength);
+    els.cloverCount.textContent = String(game.inventory.clover);
+    els.tntBtn.classList.toggle("empty", game.inventory.tnt <= 0);
+
+    buffChip.classList.toggle("hidden", game.strength <= 0);
+    if (game.strength > 0) {
+      buffText.textContent = "力量 " + game.strength.toFixed(1) + "s";
+    }
+    els.bestScoreStart.textContent = moneyText(save.bestScore);
+    els.bestLevelStart.textContent = String(Math.max(1, save.bestLevel));
+  }
+
+  function resize(initial) {
+    const rect = els.stage.getBoundingClientRect();
+    const cssWidth = Math.max(1, rect.width);
+    const cssHeight = Math.max(1, rect.height);
+    const oldH = H;
+    H = Math.round(clamp((W * cssHeight) / cssWidth, 700, 1320));
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    els.canvas.width = Math.round(W * dpr);
+    els.canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+
+    game.hook.maxLength = Math.hypot(W * 0.72, H - PIVOT_Y) + 140;
+    if (!initial && oldH !== H && game.items.length) {
+      const ratio = H / oldH;
+      game.items.forEach(function (item) {
+        item.y = clamp(item.y * ratio, ITEM_START_Y + item.r, H - 66 - item.r);
+        item.x = clamp(item.x, 40 + item.r, W - 40 - item.r);
+      });
+    }
+
+    buildBackground();
+    updateHud();
+  }
+
+  function roundedRect(c, x, y, width, height, radius) {
+    const r = Math.min(radius, width / 2, height / 2);
+    c.beginPath();
+    c.moveTo(x + r, y);
+    c.arcTo(x + width, y, x + width, y + height, r);
+    c.arcTo(x + width, y + height, x, y + height, r);
+    c.arcTo(x, y + height, x, y, r);
+    c.arcTo(x, y, x + width, y, r);
+    c.closePath();
+  }
+
+  function drawWoodBeam(c, x, y, width, height) {
+    const grad = c.createLinearGradient(x, y, x, y + height);
+    grad.addColorStop(0, "#8b5b2d");
+    grad.addColorStop(0.45, "#6d4421");
+    grad.addColorStop(1, "#4a2c15");
+    c.fillStyle = grad;
+    roundedRect(c, x, y, width, height, Math.min(6, height / 3));
+    c.fill();
+    c.strokeStyle = "rgba(34, 19, 9, 0.85)";
+    c.lineWidth = 2;
+    c.stroke();
+
+    c.save();
+    c.strokeStyle = "rgba(38, 21, 10, 0.35)";
+    c.lineWidth = 1;
+    for (let lineY = y + 7; lineY < y + height; lineY += 8) {
+      c.beginPath();
+      c.moveTo(x + 2, lineY);
+      c.lineTo(x + width - 2, lineY + 1);
+      c.stroke();
+    }
+    c.fillStyle = "rgba(255, 214, 142, 0.16)";
+    c.fillRect(x + 3, y + 2, width - 6, 1);
+    c.fillStyle = "rgba(30, 17, 8, 0.55)";
+    [x + 7, x + width - 7].forEach(function (boltX) {
+      c.beginPath();
+      c.arc(boltX, y + height / 2, 2, 0, Math.PI * 2);
+      c.fill();
+    });
+    c.restore();
+  }
+
+  function drawLantern(c, x, y) {
+    c.save();
+    c.translate(x, y);
+    c.strokeStyle = "#2a190e";
+    c.lineWidth = 2;
+    c.beginPath();
+    c.moveTo(0, -44);
+    c.lineTo(0, -16);
+    c.stroke();
+
+    const glow = c.createRadialGradient(0, 0, 3, 0, 0, 58);
+    glow.addColorStop(0, "rgba(255, 201, 92, 0.34)");
+    glow.addColorStop(0.45, "rgba(255, 173, 62, 0.12)");
+    glow.addColorStop(1, "rgba(255, 150, 30, 0)");
+    c.fillStyle = glow;
+    c.beginPath();
+    c.arc(0, 0, 58, 0, Math.PI * 2);
+    c.fill();
+
+    c.fillStyle = "#3c2412";
+    roundedRect(c, -7, -22, 14, 5, 2);
+    c.fill();
+    c.fillStyle = "rgba(255, 190, 73, 0.9)";
+    roundedRect(c, -9, -17, 18, 25, 5);
+    c.fill();
+    c.strokeStyle = "#3c2412";
+    c.lineWidth = 1.5;
+    c.stroke();
+    c.fillStyle = "rgba(255, 245, 190, 0.85)";
+    roundedRect(c, -5, -13, 10, 16, 4);
+    c.fill();
+    c.fillStyle = "#3c2412";
+    roundedRect(c, -9, 8, 18, 4, 2);
+    c.fill();
+    c.restore();
+  }
+
+  function buildBackground() {
+    bgCanvas.width = W;
+    bgCanvas.height = H;
+    const b = bgCtx;
+    b.setTransform(1, 0, 0, 1, 0, 0);
+    b.clearRect(0, 0, W, H);
+    const rng = C.mulberry32(90210);
+
+    const sky = b.createLinearGradient(0, 0, 0, 244);
+    sky.addColorStop(0, "#0d1634");
+    sky.addColorStop(0.42, "#33244f");
+    sky.addColorStop(0.7, "#7b3f4a");
+    sky.addColorStop(0.9, "#c16a45");
+    sky.addColorStop(1, "#e3a05b");
+    b.fillStyle = sky;
+    b.fillRect(0, 0, W, 246);
+
+    for (let i = 0; i < 72; i += 1) {
+      const starX = rng() * W;
+      const starY = rng() * 174;
+      const radius = 0.45 + rng() * 1.35;
+      b.globalAlpha = 0.18 + rng() * 0.62;
+      b.fillStyle = "#fff6d9";
+      b.beginPath();
+      b.arc(starX, starY, radius, 0, Math.PI * 2);
+      b.fill();
+    }
+    b.globalAlpha = 1;
+
+    const moonGlow = b.createRadialGradient(W - 76, 66, 6, W - 76, 66, 60);
+    moonGlow.addColorStop(0, "rgba(255, 238, 184, 0.42)");
+    moonGlow.addColorStop(0.5, "rgba(255, 220, 140, 0.12)");
+    moonGlow.addColorStop(1, "rgba(255, 210, 120, 0)");
+    b.fillStyle = moonGlow;
+    b.beginPath();
+    b.arc(W - 76, 66, 60, 0, Math.PI * 2);
+    b.fill();
+    b.fillStyle = "#ffe8b3";
+    b.beginPath();
+    b.arc(W - 76, 66, 24, 0, Math.PI * 2);
+    b.fill();
+    b.fillStyle = "rgba(190, 154, 96, 0.18)";
+    [[-7, -5, 5], [6, 7, 3.5], [9, -8, 2.6]].forEach(function (crater) {
+      b.beginPath();
+      b.arc(W - 76 + crater[0], 66 + crater[1], crater[2], 0, Math.PI * 2);
+      b.fill();
+    });
+
+    b.beginPath();
+    b.moveTo(0, 238);
+    b.quadraticCurveTo(86, 194, 183, 230);
+    b.quadraticCurveTo(286, 262, 405, 216);
+    b.quadraticCurveTo(482, 190, W, 228);
+    b.lineTo(W, 252);
+    b.lineTo(0, 252);
+    b.closePath();
+    b.fillStyle = "#251519";
+    b.fill();
+
+    const dirt = b.createLinearGradient(0, 238, 0, H);
+    dirt.addColorStop(0, "#70462a");
+    dirt.addColorStop(0.28, "#53311d");
+    dirt.addColorStop(0.64, "#352013");
+    dirt.addColorStop(1, "#1d1009");
+    b.fillStyle = dirt;
+    b.fillRect(0, 238, W, H - 238);
+
+    b.fillStyle = "#2a1710";
+    b.fillRect(0, 236, W, 9);
+    b.fillStyle = "rgba(255, 186, 102, 0.2)";
+    b.fillRect(0, 236, W, 2);
+
+    for (let layer = 0; layer < 8; layer += 1) {
+      const baseY = 292 + layer * 104 + rng() * 24;
+      b.beginPath();
+      b.moveTo(-20, baseY);
+      b.bezierCurveTo(W * 0.25, baseY - 18 - rng() * 16, W * 0.62, baseY + 16 + rng() * 18, W + 20, baseY - 6);
+      b.strokeStyle = layer % 2 ? "rgba(0, 0, 0, 0.17)" : "rgba(255, 184, 108, 0.055)";
+      b.lineWidth = 1.5 + rng() * 2.5;
+      b.stroke();
+    }
+
+    for (let i = 0; i < 330; i += 1) {
+      const dotX = rng() * W;
+      const dotY = 252 + rng() * (H - 260);
+      const radius = 0.55 + rng() * 2.2;
+      b.fillStyle = rng() > 0.45 ? "rgba(0, 0, 0, 0.2)" : "rgba(238, 173, 100, 0.09)";
+      b.beginPath();
+      b.arc(dotX, dotY, radius, 0, Math.PI * 2);
+      b.fill();
+    }
+
+    for (let i = 0; i < 30; i += 1) {
+      const pebbleX = 30 + rng() * (W - 60);
+      const pebbleY = 290 + rng() * (H - 330);
+      const pebbleR = 2.5 + rng() * 5;
+      b.fillStyle = "rgba(120, 91, 66, 0.28)";
+      b.beginPath();
+      b.ellipse(pebbleX, pebbleY, pebbleR, pebbleR * 0.62, rng() * Math.PI, 0, Math.PI * 2);
+      b.fill();
+      b.fillStyle = "rgba(255, 213, 153, 0.07)";
+      b.beginPath();
+      b.ellipse(pebbleX - pebbleR * 0.2, pebbleY - pebbleR * 0.2, pebbleR * 0.55, pebbleR * 0.3, 0, 0, Math.PI * 2);
+      b.fill();
+    }
+
+    b.save();
+    b.globalAlpha = 0.5;
+    drawWoodBeam(b, 8, 238, 18, Math.min(150, H - 238));
+    drawWoodBeam(b, W - 26, 238, 18, Math.min(150, H - 238));
+    b.restore();
+
+    drawWoodBeam(b, W / 2 - 124, 194, 248, 30);
+    drawWoodBeam(b, W / 2 - 112, 222, 14, 52);
+    drawWoodBeam(b, W / 2 + 98, 222, 14, 52);
+    drawLantern(b, 58, 262);
+
+    const topShade = b.createLinearGradient(0, 240, 0, 320);
+    topShade.addColorStop(0, "rgba(0, 0, 0, 0.24)");
+    topShade.addColorStop(1, "rgba(0, 0, 0, 0)");
+    b.fillStyle = topShade;
+    b.fillRect(0, 240, W, 80);
+  }
+
+  function drawWinch(t) {
+    ctx.save();
+    ctx.translate(0, 4);
+    const spin = game.hook.state === "swing" ? t * 0.7 : game.hook.length * 0.022;
+    ctx.rotate(spin);
+    const wheel = ctx.createRadialGradient(-5, -5, 2, 0, 0, 19);
+    wheel.addColorStop(0, "#b77a3a");
+    wheel.addColorStop(0.7, "#7c4d23");
+    wheel.addColorStop(1, "#4a2b14");
+    ctx.fillStyle = wheel;
+    ctx.beginPath();
+    ctx.arc(0, 0, 18, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#2e1a0c";
+    ctx.lineWidth = 2.4;
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(255, 215, 150, 0.3)";
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 6; i += 1) {
+      ctx.rotate(Math.PI / 3);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, 15);
+      ctx.stroke();
+    }
+    ctx.fillStyle = "#d7a25a";
+    ctx.beginPath();
+    ctx.arc(0, 0, 4.4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawMiner(t) {
+    const bob = Math.sin(t * 2.05) * 1.2;
+    ctx.save();
+    ctx.translate(W / 2, 204 + bob);
+
+    ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+    ctx.beginPath();
+    ctx.ellipse(0, 7, 30, 7, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#2b455f";
+    roundedRect(ctx, -17, -18, 13, 22, 5);
+    ctx.fill();
+    roundedRect(ctx, 4, -18, 13, 22, 5);
+    ctx.fill();
+    ctx.fillStyle = "#24160e";
+    roundedRect(ctx, -19, -2, 16, 10, 4);
+    ctx.fill();
+    roundedRect(ctx, 3, -2, 16, 10, 4);
+    ctx.fill();
+
+    const body = ctx.createLinearGradient(0, -38, 0, 0);
+    body.addColorStop(0, "#cf6048");
+    body.addColorStop(1, "#91372a");
+    ctx.fillStyle = body;
+    roundedRect(ctx, -19, -38, 38, 36, 11);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(52, 20, 14, 0.55)";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.fillStyle = "#2d4b68";
+    roundedRect(ctx, -12, -22, 24, 21, 5);
+    ctx.fill();
+    ctx.strokeStyle = "#1c3146";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(-10, -22);
+    ctx.lineTo(-14, -34);
+    ctx.moveTo(10, -22);
+    ctx.lineTo(14, -34);
+    ctx.stroke();
+    ctx.fillStyle = "#f0b24a";
+    ctx.beginPath();
+    ctx.arc(-9, -23, 2, 0, Math.PI * 2);
+    ctx.arc(9, -23, 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = "#c9563f";
+    ctx.lineWidth = 8;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(-15, -30);
+    ctx.lineTo(-13, 1);
+    ctx.moveTo(15, -30);
+    ctx.lineTo(13, 1);
+    ctx.stroke();
+    ctx.fillStyle = "#f0bd8d";
+    ctx.beginPath();
+    ctx.arc(-13, 2, 4.5, 0, Math.PI * 2);
+    ctx.arc(13, 2, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#f0bd8d";
+    ctx.beginPath();
+    ctx.arc(0, -50, 13, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#e5a978";
+    ctx.beginPath();
+    ctx.arc(-13, -50, 3, 0, Math.PI * 2);
+    ctx.arc(13, -50, 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#6d4327";
+    ctx.beginPath();
+    ctx.moveTo(-13, -45);
+    ctx.quadraticCurveTo(0, -25, 13, -45);
+    ctx.quadraticCurveTo(7, -36, 0, -36);
+    ctx.quadraticCurveTo(-7, -36, -13, -45);
+    ctx.fill();
+
+    ctx.fillStyle = "#2b1b10";
+    ctx.beginPath();
+    ctx.arc(-4.5, -52, 1.5, 0, Math.PI * 2);
+    ctx.arc(4.5, -52, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#d99a6b";
+    ctx.beginPath();
+    ctx.ellipse(0, -47.5, 3.5, 2.8, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#5e3820";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(-6, -43.5);
+    ctx.quadraticCurveTo(-3, -41, 0, -43.5);
+    ctx.quadraticCurveTo(3, -41, 6, -43.5);
+    ctx.stroke();
+
+    const helmet = ctx.createLinearGradient(0, -66, 0, -50);
+    helmet.addColorStop(0, "#ffe083");
+    helmet.addColorStop(0.55, "#f7bd3e");
+    helmet.addColorStop(1, "#c9871d");
+    ctx.fillStyle = helmet;
+    ctx.beginPath();
+    ctx.moveTo(-14.5, -57);
+    ctx.quadraticCurveTo(-14, -72, 0, -72);
+    ctx.quadraticCurveTo(14, -72, 14.5, -57);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "#8d5a0d";
+    ctx.lineWidth = 1.6;
+    ctx.stroke();
+    ctx.fillStyle = "#e0a02a";
+    roundedRect(ctx, -17, -58, 34, 5, 2.5);
+    ctx.fill();
+    ctx.strokeStyle = "#8d5a0d";
+    ctx.stroke();
+
+    const lampGlow = ctx.createRadialGradient(0, -66, 1, 0, -66, 26);
+    lampGlow.addColorStop(0, "rgba(255, 246, 188, 0.55)");
+    lampGlow.addColorStop(0.4, "rgba(255, 218, 105, 0.16)");
+    lampGlow.addColorStop(1, "rgba(255, 190, 50, 0)");
+    ctx.fillStyle = lampGlow;
+    ctx.beginPath();
+    ctx.arc(0, -66, 26, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fff6c4";
+    ctx.beginPath();
+    ctx.arc(0, -65, 4.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#8d5a0d";
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    drawWinch(t);
+    ctx.restore();
+  }
+
+  function drawGoldArt(c, r) {
+    const points = [
+      [-0.72, -0.3], [-0.42, -0.72], [-0.05, -0.82], [0.45, -0.6], [0.78, -0.15],
+      [0.62, 0.36], [0.3, 0.72], [-0.25, 0.78], [-0.68, 0.4], [-0.82, -0.02]
+    ];
+    const grad = c.createRadialGradient(-r * 0.32, -r * 0.4, r * 0.08, 0, 0, r * 1.15);
+    grad.addColorStop(0, "#fff5bd");
+    grad.addColorStop(0.35, "#ffd75e");
+    grad.addColorStop(0.72, "#e8a21e");
+    grad.addColorStop(1, "#a9660a");
+    c.beginPath();
+    points.forEach(function (point, index) {
+      const x = point[0] * r;
+      const y = point[1] * r;
+      if (index === 0) c.moveTo(x, y);
+      else c.lineTo(x, y);
+    });
+    c.closePath();
+    c.fillStyle = grad;
+    c.fill();
+    c.strokeStyle = "#7e4b08";
+    c.lineWidth = Math.max(1.4, r * 0.09);
+    c.stroke();
+
+    c.beginPath();
+    c.moveTo(-r * 0.42, -r * 0.34);
+    c.lineTo(-r * 0.04, -r * 0.56);
+    c.lineTo(r * 0.44, -r * 0.3);
+    c.lineTo(r * 0.22, r * 0.12);
+    c.lineTo(-r * 0.26, r * 0.2);
+    c.closePath();
+    c.fillStyle = "rgba(255, 247, 190, 0.42)";
+    c.fill();
+
+    c.fillStyle = "rgba(255, 255, 255, 0.72)";
+    c.beginPath();
+    c.ellipse(-r * 0.3, -r * 0.42, r * 0.25, r * 0.1, -0.55, 0, Math.PI * 2);
+    c.fill();
+    c.fillStyle = "rgba(122, 68, 6, 0.28)";
+    c.beginPath();
+    c.ellipse(r * 0.3, r * 0.38, r * 0.24, r * 0.11, 0.4, 0, Math.PI * 2);
+    c.fill();
+  }
+
+  function drawRockArt(c, r) {
+    const points = [
+      [-0.72, -0.32], [-0.46, -0.74], [0.06, -0.82], [0.55, -0.55], [0.8, -0.08],
+      [0.58, 0.48], [0.16, 0.78], [-0.42, 0.66], [-0.78, 0.24]
+    ];
+    const grad = c.createLinearGradient(-r * 0.5, -r * 0.7, r * 0.6, r * 0.7);
+    grad.addColorStop(0, "#9aa1a3");
+    grad.addColorStop(0.45, "#6b7478");
+    grad.addColorStop(1, "#414a4f");
+    c.beginPath();
+    points.forEach(function (point, index) {
+      const x = point[0] * r;
+      const y = point[1] * r;
+      if (index === 0) c.moveTo(x, y);
+      else c.lineTo(x, y);
+    });
+    c.closePath();
+    c.fillStyle = grad;
+    c.fill();
+    c.strokeStyle = "#2c3337";
+    c.lineWidth = Math.max(1.4, r * 0.08);
+    c.stroke();
+
+    c.strokeStyle = "rgba(30, 36, 39, 0.45)";
+    c.lineWidth = Math.max(1, r * 0.05);
+    c.beginPath();
+    c.moveTo(-r * 0.44, -r * 0.44);
+    c.lineTo(-r * 0.12, -r * 0.07);
+    c.lineTo(r * 0.1, -r * 0.28);
+    c.moveTo(-r * 0.12, -r * 0.07);
+    c.lineTo(-r * 0.22, r * 0.42);
+    c.moveTo(-r * 0.12, -r * 0.07);
+    c.lineTo(r * 0.5, r * 0.18);
+    c.stroke();
+    c.fillStyle = "rgba(255, 255, 255, 0.18)";
+    c.beginPath();
+    c.ellipse(-r * 0.28, -r * 0.48, r * 0.24, r * 0.1, -0.3, 0, Math.PI * 2);
+    c.fill();
+  }
+
+  function drawDiamondArt(c, r) {
+    const grad = c.createLinearGradient(-r * 0.7, -r * 0.8, r * 0.65, r * 0.8);
+    grad.addColorStop(0, "#e5ffff");
+    grad.addColorStop(0.3, "#90f8f2");
+    grad.addColorStop(0.65, "#3dc8d3");
+    grad.addColorStop(1, "#1a7f9f");
+    c.beginPath();
+    c.moveTo(0, -r * 0.86);
+    c.lineTo(r * 0.72, -r * 0.24);
+    c.lineTo(r * 0.44, r * 0.5);
+    c.lineTo(0, r * 0.92);
+    c.lineTo(-r * 0.44, r * 0.5);
+    c.lineTo(-r * 0.72, -r * 0.24);
+    c.closePath();
+    c.fillStyle = grad;
+    c.fill();
+    c.strokeStyle = "#126478";
+    c.lineWidth = Math.max(1.3, r * 0.08);
+    c.stroke();
+
+    c.beginPath();
+    c.moveTo(-r * 0.72, -r * 0.24);
+    c.lineTo(-r * 0.26, -r * 0.24);
+    c.lineTo(0, r * 0.92);
+    c.lineTo(0, -r * 0.86);
+    c.closePath();
+    c.fillStyle = "rgba(255, 255, 255, 0.2)";
+    c.fill();
+    c.beginPath();
+    c.moveTo(-r * 0.26, -r * 0.24);
+    c.lineTo(r * 0.26, -r * 0.24);
+    c.lineTo(r * 0.44, r * 0.5);
+    c.lineTo(-r * 0.44, r * 0.5);
+    c.closePath();
+    c.fillStyle = "rgba(20, 110, 140, 0.18)";
+    c.fill();
+    c.strokeStyle = "rgba(235, 255, 255, 0.78)";
+    c.lineWidth = Math.max(1, r * 0.05);
+    c.beginPath();
+    c.moveTo(-r * 0.26, -r * 0.24);
+    c.lineTo(0, -r * 0.86);
+    c.lineTo(r * 0.26, -r * 0.24);
+    c.moveTo(-r * 0.26, -r * 0.24);
+    c.lineTo(0, r * 0.92);
+    c.lineTo(r * 0.26, -r * 0.24);
+    c.stroke();
+    c.fillStyle = "rgba(255, 255, 255, 0.85)";
+    c.beginPath();
+    c.ellipse(-r * 0.24, -r * 0.42, r * 0.12, r * 0.05, -0.7, 0, Math.PI * 2);
+    c.fill();
+  }
+
+  function drawTntArt(c, r) {
+    const body = c.createLinearGradient(-r * 0.7, 0, r * 0.7, 0);
+    body.addColorStop(0, "#9e2e24");
+    body.addColorStop(0.45, "#e75b45");
+    body.addColorStop(1, "#a72f24");
+    [-0.52, 0, 0.52].forEach(function (offset) {
+      c.fillStyle = body;
+      roundedRect(c, offset * r - r * 0.21, -r * 0.6, r * 0.42, r * 1.2, r * 0.12);
+      c.fill();
+      c.strokeStyle = "#6f1d16";
+      c.lineWidth = Math.max(1, r * 0.045);
+      c.stroke();
+    });
+    c.fillStyle = "#2d1710";
+    c.fillRect(-r * 0.68, -r * 0.52, r * 1.36, r * 0.12);
+    c.fillRect(-r * 0.68, r * 0.34, r * 1.36, r * 0.12);
+    c.fillStyle = "#fff3d0";
+    c.font = "800 " + Math.max(5, r * 0.36) + "px sans-serif";
+    c.textAlign = "center";
+    c.textBaseline = "middle";
+    c.fillText("TNT", 0, r * 0.02);
+
+    c.strokeStyle = "#8b6a37";
+    c.lineWidth = Math.max(1.4, r * 0.08);
+    c.beginPath();
+    c.moveTo(r * 0.12, -r * 0.6);
+    c.bezierCurveTo(r * 0.4, -r * 0.92, r * 0.06, -r * 1.04, r * 0.38, -r * 1.18);
+    c.stroke();
+    const spark = c.createRadialGradient(r * 0.38, -r * 1.18, 0, r * 0.38, -r * 1.18, r * 0.3);
+    spark.addColorStop(0, "rgba(255, 255, 210, 1)");
+    spark.addColorStop(0.4, "rgba(255, 196, 70, 0.9)");
+    spark.addColorStop(1, "rgba(255, 140, 30, 0)");
+    c.fillStyle = spark;
+    c.beginPath();
+    c.arc(r * 0.38, -r * 1.18, r * 0.32, 0, Math.PI * 2);
+    c.fill();
+  }
+
+  function drawCloverArt(c, r) {
+    const grad = c.createRadialGradient(-r * 0.2, -r * 0.35, r * 0.1, 0, 0, r * 1.1);
+    grad.addColorStop(0, "#d7ffc6");
+    grad.addColorStop(0.42, "#79d67f");
+    grad.addColorStop(1, "#2d8a4c");
+    c.fillStyle = grad;
+    c.strokeStyle = "#1f6637";
+    c.lineWidth = Math.max(1, r * 0.06);
+    for (let i = 0; i < 4; i += 1) {
+      c.save();
+      c.rotate((Math.PI / 2) * i);
+      c.beginPath();
+      c.moveTo(0, 0);
+      c.bezierCurveTo(-r * 0.55, -r * 0.5, -r * 0.52, -r * 1.08, 0, -r * 0.78);
+      c.bezierCurveTo(r * 0.52, -r * 1.08, r * 0.55, -r * 0.5, 0, 0);
+      c.closePath();
+      c.fill();
+      c.stroke();
+      c.restore();
+    }
+    c.strokeStyle = "#2d8a4c";
+    c.lineWidth = Math.max(1.5, r * 0.11);
+    c.lineCap = "round";
+    c.beginPath();
+    c.moveTo(0, r * 0.1);
+    c.quadraticCurveTo(r * 0.18, r * 0.55, r * 0.05, r * 0.94);
+    c.stroke();
+    c.fillStyle = "rgba(255, 255, 255, 0.55)";
+    c.beginPath();
+    c.arc(-r * 0.16, -r * 0.52, r * 0.1, 0, Math.PI * 2);
+    c.fill();
+  }
+
+  function drawStrengthArt(c, r) {
+    c.fillStyle = "rgba(255, 255, 255, 0.16)";
+    roundedRect(c, -r * 0.36, -r * 0.88, r * 0.72, r * 0.3, r * 0.08);
+    c.fill();
+    c.fillStyle = "#e8c35a";
+    roundedRect(c, -r * 0.42, -r * 0.98, r * 0.84, r * 0.18, r * 0.07);
+    c.fill();
+
+    const glass = c.createLinearGradient(-r * 0.6, 0, r * 0.6, 0);
+    glass.addColorStop(0, "rgba(255, 235, 245, 0.45)");
+    glass.addColorStop(0.5, "rgba(255, 185, 214, 0.4)");
+    glass.addColorStop(1, "rgba(230, 120, 165, 0.5)");
+    c.fillStyle = glass;
+    roundedRect(c, -r * 0.58, -r * 0.7, r * 1.16, r * 1.56, r * 0.3);
+    c.fill();
+    c.strokeStyle = "#a95377";
+    c.lineWidth = Math.max(1.2, r * 0.07);
+    c.stroke();
+
+    const liquid = c.createLinearGradient(0, -r * 0.1, 0, r * 0.8);
+    liquid.addColorStop(0, "#ff9fc4");
+    liquid.addColorStop(1, "#e3457f");
+    c.fillStyle = liquid;
+    c.beginPath();
+    c.moveTo(-r * 0.5, -r * 0.08);
+    c.lineTo(r * 0.5, -r * 0.08);
+    c.lineTo(r * 0.5, r * 0.55);
+    c.quadraticCurveTo(r * 0.5, r * 0.84, r * 0.2, r * 0.84);
+    c.lineTo(-r * 0.2, r * 0.84);
+    c.quadraticCurveTo(-r * 0.5, r * 0.84, -r * 0.5, r * 0.55);
+    c.closePath();
+    c.fill();
+
+    c.fillStyle = "#fff9d5";
+    c.beginPath();
+    c.moveTo(r * 0.06, -r * 0.52);
+    c.lineTo(-r * 0.24, r * 0.02);
+    c.lineTo(r * 0.02, r * 0.02);
+    c.lineTo(-r * 0.1, r * 0.55);
+    c.lineTo(r * 0.32, -r * 0.12);
+    c.lineTo(r * 0.04, -r * 0.12);
+    c.closePath();
+    c.fill();
+
+    c.fillStyle = "rgba(255, 255, 255, 0.62)";
+    roundedRect(c, -r * 0.42, -r * 0.56, r * 0.12, r * 0.48, r * 0.06);
+    c.fill();
+  }
+
+  const spriteCache = new Map();
+
+  function getItemSprite(type) {
+    if (spriteCache.has(type)) return spriteCache.get(type);
+    const def = C.ITEM_DEFS[type];
+    const pad = 14;
+    const size = def.radius * 2 + pad * 2;
+    const scale = 2;
+    const sprite = document.createElement("canvas");
+    sprite.width = Math.ceil(size * scale);
+    sprite.height = Math.ceil(size * scale);
+    const c = sprite.getContext("2d");
+    c.scale(scale, scale);
+    c.translate(pad + def.radius, pad + def.radius);
+    if (def.kind === "gold") drawGoldArt(c, def.radius);
+    else if (def.kind === "rock") drawRockArt(c, def.radius);
+    else if (def.kind === "diamond") drawDiamondArt(c, def.radius);
+    else if (def.kind === "tnt") drawTntArt(c, def.radius);
+    else if (def.kind === "clover") drawCloverArt(c, def.radius);
+    else drawStrengthArt(c, def.radius);
+    const result = { canvas: sprite, size: size };
+    spriteCache.set(type, result);
+    return result;
+  }
+
+  function drawSparkle(x, y, size, alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = "#fffbe0";
+    ctx.beginPath();
+    ctx.moveTo(x, y - size);
+    ctx.lineTo(x + size * 0.26, y);
+    ctx.lineTo(x, y + size);
+    ctx.lineTo(x - size * 0.26, y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(x - size, y);
+    ctx.lineTo(x, y - size * 0.26);
+    ctx.lineTo(x + size, y);
+    ctx.lineTo(x, y + size * 0.26);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawItemAt(item, x, y, t, idle) {
+    const def = item.def;
+    const sprite = getItemSprite(item.type);
+    const bob = idle ? Math.sin(t * 1.55 + item.phase) * 1.8 : 0;
+    const drawY = y + bob;
+
+    ctx.save();
+    ctx.globalAlpha = idle ? 0.32 : 0.18;
+    ctx.fillStyle = "#000";
+    ctx.beginPath();
+    ctx.ellipse(x + 2, y + def.radius * 0.74, def.radius * 0.88, def.radius * 0.3, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.drawImage(sprite.canvas, x - sprite.size / 2, drawY - sprite.size / 2, sprite.size, sprite.size);
+
+    if (def.kind === "gold" || def.kind === "diamond") {
+      const alpha = 0.28 + 0.62 * (0.5 + 0.5 * Math.sin(t * 2.6 + item.phase * 1.7));
+      const starSize = def.kind === "diamond" ? 4.2 : 2.6;
+      drawSparkle(x + def.radius * 0.42, drawY - def.radius * 0.58, starSize, alpha);
+      if (def.kind === "diamond") {
+        drawSparkle(x - def.radius * 0.48, drawY + def.radius * 0.3, 2.4, alpha * 0.75);
+      }
+    }
+  }
+
+  function drawItems(t) {
+    game.items.forEach(function (item) {
+      if (item.state === "idle") drawItemAt(item, item.x, item.y, t, true);
+    });
+  }
+
+  function hookTip() {
+    const hook = game.hook;
+    return {
+      x: W / 2 + Math.sin(hook.angle) * hook.length,
+      y: PIVOT_Y + Math.cos(hook.angle) * hook.length
+    };
+  }
+
+  function drawHookClaw(x, y, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.strokeStyle = "#2d1a0d";
+    ctx.lineWidth = 5;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(0, -4);
+    ctx.lineTo(0, 9);
+    ctx.stroke();
+    ctx.strokeStyle = "#b8864b";
+    ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.moveTo(0, -2);
+    ctx.lineTo(0, 8);
+    ctx.stroke();
+
+    ctx.strokeStyle = "#3a2413";
+    ctx.lineWidth = 5.5;
+    ctx.beginPath();
+    ctx.moveTo(0, 7);
+    ctx.quadraticCurveTo(-11, 13, -8, 20);
+    ctx.moveTo(0, 7);
+    ctx.quadraticCurveTo(11, 13, 8, 20);
+    ctx.stroke();
+    ctx.strokeStyle = "#d2a15f";
+    ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.moveTo(0, 7);
+    ctx.quadraticCurveTo(-10, 12, -7.5, 18.5);
+    ctx.moveTo(0, 7);
+    ctx.quadraticCurveTo(10, 12, 7.5, 18.5);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawRopeAndHook(t) {
+    const hook = game.hook;
+    const tip = hookTip();
+    const visualTip = hook.item
+      ? { x: tip.x, y: tip.y - hook.item.r * 0.82 }
+      : tip;
+
+    if (hook.item && hook.item.state === "caught") {
+      drawItemAt(hook.item, tip.x, tip.y + hook.item.r * 0.08, t, false);
+    }
+
+    ctx.save();
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "rgba(24, 13, 6, 0.7)";
+    ctx.lineWidth = 4.6;
+    ctx.beginPath();
+    ctx.moveTo(W / 2, PIVOT_Y);
+    ctx.lineTo(visualTip.x, visualTip.y);
+    ctx.stroke();
+    ctx.strokeStyle = "#c09257";
+    ctx.lineWidth = 1.7;
+    ctx.beginPath();
+    ctx.moveTo(W / 2, PIVOT_Y);
+    ctx.lineTo(visualTip.x, visualTip.y);
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(255, 228, 180, 0.36)";
+    ctx.lineWidth = 0.8;
+    ctx.beginPath();
+    ctx.moveTo(W / 2 - 0.8, PIVOT_Y);
+    ctx.lineTo(visualTip.x - 0.8, visualTip.y);
+    ctx.stroke();
+    ctx.restore();
+
+    drawHookClaw(visualTip.x, visualTip.y, hook.angle);
+  }
+
+  function spawnBurst(x, y, colors, count, speed, size) {
+    for (let i = 0; i < count; i += 1) {
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = randomBetween(speed * 0.3, speed);
+      const life = randomBetween(0.32, 0.78);
+      game.particles.push({
+        x: x,
+        y: y,
+        vx: Math.cos(angle) * velocity,
+        vy: Math.sin(angle) * velocity - randomBetween(20, 90),
+        life: life,
+        maxLife: life,
+        size: randomBetween(size * 0.45, size),
+        color: colors[Math.floor(Math.random() * colors.length)],
+        gravity: randomBetween(220, 520)
+      });
+    }
+    if (game.particles.length > 260) {
+      game.particles.splice(0, game.particles.length - 260);
+    }
+  }
+
+  function addFloater(x, y, text, color) {
+    game.floaters.push({
+      x: x,
+      y: y,
+      text: text,
+      color: color || "#ffe07a",
+      life: 1.15,
+      maxLife: 1.15
+    });
+  }
+
+  function updateEffects(dt) {
+    game.particles.forEach(function (particle) {
+      particle.life -= dt;
+      particle.vy += particle.gravity * dt;
+      particle.x += particle.vx * dt;
+      particle.y += particle.vy * dt;
+    });
+    game.particles = game.particles.filter(function (particle) {
+      return particle.life > 0;
+    });
+
+    game.floaters.forEach(function (floater) {
+      floater.life -= dt;
+      floater.y -= 48 * dt;
+    });
+    game.floaters = game.floaters.filter(function (floater) {
+      return floater.life > 0;
+    });
+
+    if (game.shake.time > 0) game.shake.time = Math.max(0, game.shake.time - dt);
+  }
+
+  function drawParticles() {
+    game.particles.forEach(function (particle) {
+      const alpha = clamp(particle.life / particle.maxLife, 0, 1);
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = particle.color;
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size * (0.5 + alpha * 0.5), 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  function drawFloaters() {
+    game.floaters.forEach(function (floater) {
+      const alpha = clamp((floater.life / floater.maxLife) * 1.8, 0, 1);
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.font = "900 19px \"PingFang SC\", \"Microsoft YaHei\", sans-serif";
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "rgba(28, 15, 6, 0.85)";
+      ctx.strokeText(floater.text, floater.x, floater.y);
+      ctx.fillStyle = floater.color;
+      ctx.fillText(floater.text, floater.x, floater.y);
+      ctx.restore();
+    });
+  }
+
+  function shakeScreen(power, duration) {
+    game.shake.power = Math.max(game.shake.power, power);
+    game.shake.time = Math.max(game.shake.time, duration);
+  }
+
+  function generateLevel(level) {
+    const plan = C.makeItemPlan(level, Math.random);
+    const bounds = {
+      minX: 42,
+      maxX: W - 42,
+      minY: ITEM_START_Y,
+      maxY: Math.max(ITEM_START_Y + 220, H - 66)
+    };
+    const placed = C.placeItems(plan, bounds, Math.random);
+    return placed.map(function (entry, index) {
+      return {
+        id: index,
+        type: entry.type,
+        def: C.ITEM_DEFS[entry.type],
+        x: entry.x,
+        y: entry.y,
+        r: entry.r,
+        state: "idle",
+        phase: Math.random() * Math.PI * 2
+      };
+    });
+  }
+
+  function resetHook() {
+    game.hook.angle = 0;
+    game.hook.dir = Math.random() > 0.5 ? 1 : -1;
+    game.hook.length = HOOK_MIN;
+    game.hook.state = "swing";
+    game.hook.item = null;
+    game.hook.speed = 1.12 + Math.min(0.34, (game.level - 1) * 0.035);
+  }
+
+  function startGame() {
+    Sound.ensure();
+    Sound.click();
+    game.money = 0;
+    game.inventory = { tnt: 0, strength: 0, clover: 0 };
+    startLevel(1);
+  }
+
+  function startLevel(level) {
+    game.level = level;
+    game.target = C.levelTarget(level);
+    game.timeLeft = C.LEVEL_SECONDS;
+    game.lastTimeShown = null;
+    game.levelEarned = 0;
+    game.timeUp = false;
+    game.strength = 0;
+    game.items = generateLevel(level);
+    game.particles = [];
+    game.floaters = [];
+    game.shake.time = 0;
+    game.hook.maxLength = Math.hypot(W * 0.72, H - PIVOT_Y) + 140;
+    resetHook();
+    game.mode = "playing";
+    hideScreens();
+    updateHud();
+    applyStartingSupplies();
+  }
+
+  function applyStartingSupplies() {
+    if (game.inventory.strength > 0) {
+      game.inventory.strength -= 1;
+      activateStrength();
+      addFloater(W / 2, ITEM_START_Y + 36, "力量 +8s", "#ffb3d0");
+      showToast("力量饮料已生效：8 秒快速回收");
+    }
+    if (game.inventory.clover > 0) {
+      game.inventory.clover -= 1;
+      const reward = C.randomReward();
+      game.money += reward;
+      game.levelEarned += reward;
+      addFloater(W / 2, ITEM_START_Y + 72, "幸运 +" + moneyText(reward), "#9cf0a8");
+      showToast("幸运草带来 " + moneyText(reward));
+      Sound.coin();
+    }
+    updateHud();
+  }
+
+  function activateStrength() {
+    game.strength = C.BUFF_SECONDS;
+    updateHud();
+  }
+
+  function fireHook() {
+    if (game.mode !== "playing" || game.timeUp || game.hook.state !== "swing") return;
+    game.hook.state = "shoot";
+    Sound.shoot();
+    vibrate(8);
+  }
+
+  function updateHook(dt) {
+    const hook = game.hook;
+
+    if (hook.state === "swing") {
+      hook.angle += hook.dir * hook.speed * dt;
+      if (hook.angle > MAX_ANGLE) {
+        hook.angle = MAX_ANGLE;
+        hook.dir = -1;
+      } else if (hook.angle < -MAX_ANGLE) {
+        hook.angle = -MAX_ANGLE;
+        hook.dir = 1;
+      }
+      return;
+    }
+
+    if (hook.state === "shoot") {
+      hook.length += SHOOT_SPEED * dt;
+      const tip = hookTip();
+      let hit = null;
+      let bestDistance = Infinity;
+      game.items.forEach(function (item) {
+        if (item.state !== "idle") return;
+        const distance = Math.hypot(tip.x - item.x, tip.y - item.y);
+        if (distance < item.r + 16 && distance < bestDistance) {
+          hit = item;
+          bestDistance = distance;
+        }
+      });
+
+      if (hit) {
+        hit.state = "caught";
+        hook.item = hit;
+        hook.state = "retract";
+        Sound.grab();
+        vibrate(14);
+        spawnBurst(hit.x, hit.y, ["#ffe7a0", "#ffc94a", "rgba(255,255,240,.9)"], 7, 130, 2.2);
+      } else if (tip.x < 8 || tip.x > W - 8 || tip.y > H - 8 || hook.length > hook.maxLength) {
+        hook.state = "retract";
+      }
+      return;
+    }
+
+    if (hook.state === "retract") {
+      const speed = hook.item ? C.retrieveSpeed(hook.item.def.weight, game.strength > 0) : EMPTY_RETURN_SPEED;
+      hook.length -= speed * dt;
+      if (hook.item) {
+        const tip = hookTip();
+        hook.item.x = tip.x;
+        hook.item.y = tip.y;
+      }
+      if (hook.length <= HOOK_MIN) {
+        hook.length = HOOK_MIN;
+        if (hook.item) collectItem(hook.item);
+        hook.item = null;
+        hook.state = "swing";
+        if (game.timeUp) endLevel();
+      }
+    }
+  }
+
+  function collectItem(item) {
+    item.state = "collected";
+    game.items = game.items.filter(function (entry) {
+      return entry !== item;
+    });
+
+    const def = item.def;
+    if (def.value > 0) {
+      game.money += def.value;
+      game.levelEarned += def.value;
+      addFloater(item.x, item.y - item.r - 10, "+" + moneyText(def.value), "#ffe07a");
+    }
+    Sound.coin();
+    spawnBurst(item.x, item.y, ["#ffe7a0", "#ffc94a", "#fff6d6"], 12, 170, 3);
+
+    if (def.kind === "tnt") {
+      explodeRocks("pickup");
+    } else if (def.kind === "clover") {
+      const reward = C.randomReward();
+      game.money += reward;
+      game.levelEarned += reward;
+      addFloater(item.x, item.y - item.r - 28, "幸运 +" + moneyText(reward), "#9cf0a8");
+      showToast("幸运草！+" + moneyText(reward));
+      Sound.coin();
+    } else if (def.kind === "strength") {
+      activateStrength();
+      addFloater(item.x, item.y - item.r - 12, "力量 +8s", "#ffb3d0");
+      showToast("力量饮料生效：8 秒快速回收");
+    }
+
+    updateHud();
+  }
+
+  function explodeRocks(source) {
+    const rocks = game.items.filter(function (item) {
+      return item.def.kind === "rock" && (item.state === "idle" || item.state === "caught");
+    });
+    let count = 0;
+    rocks.forEach(function (rock) {
+      count += 1;
+      spawnBurst(rock.x, rock.y, ["#ffb347", "#ff6b3d", "#ffe6a1", "#8b9498"], 16, 260, 4.2);
+    });
+    game.items = game.items.filter(function (item) {
+      return !(item.def.kind === "rock" && (item.state === "idle" || item.state === "caught"));
+    });
+    if (game.hook.item && game.hook.item.def.kind === "rock") {
+      game.hook.item = null;
+    }
+
+    Sound.explosion();
+    shakeScreen(11, 0.42);
+    vibrate([60, 30, 70]);
+    if (count > 0) {
+      showToast("轰！清除了 " + count + " 块石头");
+    } else {
+      showToast(source === "pickup" ? "炸药包炸开了，场上没有石头" : "炸药炸了个寂寞：场上没有石头");
+    }
+    updateHud();
+  }
+
+  function useTnt() {
+    if (game.mode !== "playing") return;
+    if (game.inventory.tnt <= 0) {
+      showToast("没有炸药了，通关后去商店补给");
+      Sound.error();
+      return;
+    }
+    game.inventory.tnt -= 1;
+    explodeRocks("manual");
+  }
+
+  function endLevel() {
+    if (game.mode !== "playing") return;
+    game.mode = "result";
+    const win = game.levelEarned >= game.target;
+    if (win) save.bestLevel = Math.max(save.bestLevel, game.level);
+    save.bestScore = Math.max(save.bestScore, game.money);
+    persist();
+    fillResult(win);
+    showScreen("result");
+    updateHud();
+    if (win) Sound.win();
+    else Sound.fail();
+    vibrate(win ? [18, 40, 18] : [90]);
+  }
+
+  function fillResult(win) {
+    els.resultEyebrow.textContent = "第 " + game.level + " 关 · " + (win ? "达标" : "未达标");
+    els.resultTitle.textContent = win ? "矿脉拿下！" : "差一点点";
+    els.resultSub.textContent = win ? "目标达成，下一层矿脉更深。" : "再试一次，先抓钻石和小金块。";
+    els.resultIcon.classList.toggle("fail", !win);
+    els.resultIconUse.setAttribute("href", win ? "#i-star" : "#i-clock");
+    els.resultEarned.textContent = moneyText(game.levelEarned);
+    els.resultTotal.textContent = moneyText(game.money);
+    els.resultTarget.textContent = moneyText(game.target);
+    els.resultBest.textContent = moneyText(save.bestScore);
+    els.winActions.classList.toggle("hidden", !win);
+    els.failActions.classList.toggle("hidden", win);
+  }
+
+  function openShop() {
+    if (game.mode !== "result") return;
+    game.mode = "shop";
+    updateShop();
+    showScreen("shop");
+    Sound.click();
+  }
+
+  function updateShop() {
+    els.shopMoney.textContent = moneyText(game.money);
+    els.shopTntCount.textContent = String(game.inventory.tnt);
+    els.shopStrengthCount.textContent = String(game.inventory.strength);
+    els.shopCloverCount.textContent = String(game.inventory.clover);
+    document.querySelectorAll("[data-buy]").forEach(function (button) {
+      button.disabled = game.money < Number(button.getAttribute("data-price"));
+    });
+  }
+
+  function buyItem(kind, price) {
+    if (game.mode !== "shop") return;
+    if (game.money < price) {
+      showToast("金币不够，先去挖矿吧");
+      Sound.error();
+      return;
+    }
+    game.money -= price;
+    game.inventory[kind] = (game.inventory[kind] || 0) + 1;
+    const labels = { tnt: "炸药", strength: "力量饮料", clover: "幸运草" };
+    showToast("已购买" + (labels[kind] || "道具"));
+    Sound.coin();
+    updateShop();
+    updateHud();
+  }
+
+  function pauseGame() {
+    if (game.mode !== "playing") return;
+    game.mode = "paused";
+    showScreen("pause");
+    Sound.click();
+  }
+
+  function resumeGame() {
+    if (game.mode !== "paused") return;
+    game.mode = "playing";
+    hideScreens();
+    game.lastFrame = performance.now();
+    updateHud();
+    Sound.click();
+  }
+
+  function toggleMute() {
+    save.muted = !save.muted;
+    persist();
+    updateSoundButton();
+    if (!save.muted) Sound.click();
+    showToast(save.muted ? "音效已关闭" : "音效已开启", 1000);
+  }
+
+  function update(dt, t) {
+    game.elapsed = t;
+    if (game.mode === "playing") {
+      if (!game.timeUp) {
+        game.timeLeft = Math.max(0, game.timeLeft - dt);
+        if (game.timeLeft <= 0) {
+          game.timeLeft = 0;
+          game.timeUp = true;
+          showToast("时间到！", 1200);
+          if (game.hook.state === "swing") {
+            endLevel();
+            return;
+          }
+        }
+      }
+      updateHook(dt);
+      if (game.strength > 0) {
+        game.strength = Math.max(0, game.strength - dt);
+        if (game.strength === 0) showToast("力量效果结束", 900);
+      }
+      updateEffects(dt);
+      game.hudAccumulator = (game.hudAccumulator || 0) + dt;
+      if (game.hudAccumulator >= 0.1) {
+        game.hudAccumulator = 0;
+        updateHud();
+      }
+    } else if (game.mode !== "paused") {
+      updateEffects(dt);
+    }
+  }
+
+  function render(t) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    if (game.shake.time > 0) {
+      const power = game.shake.power * clamp(game.shake.time / 0.42, 0, 1);
+      ctx.translate(randomBetween(-power, power), randomBetween(-power, power));
+    }
+    ctx.drawImage(bgCanvas, 0, 0);
+    drawItems(t);
+    drawMiner(t);
+    drawRopeAndHook(t);
+    drawParticles();
+    drawFloaters();
+    ctx.restore();
+  }
+
+  function frame(now) {
+    if (!game.lastFrame) game.lastFrame = now;
+    const dt = clamp((now - game.lastFrame) / 1000, 0, 0.033);
+    game.lastFrame = now;
+    update(dt, now / 1000);
+    render(now / 1000);
+    window.requestAnimationFrame(frame);
+  }
+
+  function bindEvents() {
+    els.startBtn.addEventListener("click", function () {
+      Sound.ensure();
+      startGame();
+    });
+    els.resumeBtn.addEventListener("click", resumeGame);
+    els.restartFromPauseBtn.addEventListener("click", function () {
+      Sound.click();
+      startGame();
+    });
+    els.pauseBtn.addEventListener("click", function () {
+      if (game.mode === "playing") pauseGame();
+      else if (game.mode === "paused") resumeGame();
+    });
+    els.soundBtn.addEventListener("click", toggleMute);
+    els.tntBtn.addEventListener("click", useTnt);
+    els.shopBtn.addEventListener("click", openShop);
+    els.nextLevelBtn.addEventListener("click", function () {
+      Sound.click();
+      startLevel(game.level + 1);
+    });
+    els.retryBtn.addEventListener("click", startGame);
+    els.continueFromShopBtn.addEventListener("click", function () {
+      Sound.click();
+      startLevel(game.level + 1);
+    });
+    document.querySelectorAll("[data-buy]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        buyItem(button.getAttribute("data-buy"), Number(button.getAttribute("data-price")));
+      });
+    });
+
+    els.stage.addEventListener("pointerdown", function (event) {
+      Sound.ensure();
+      if (event.target.closest("button, .overlay.is-visible")) return;
+      if (game.mode === "playing") {
+        event.preventDefault();
+        fireHook();
+      }
+    }, { passive: false });
+
+    window.addEventListener("keydown", function (event) {
+      if (event.repeat) return;
+      const onButton = event.target && event.target.closest && event.target.closest("button");
+      if (event.code === "Space") {
+        if (onButton) return;
+        event.preventDefault();
+        if (game.mode === "menu") startGame();
+        else if (game.mode === "playing") fireHook();
+        else if (game.mode === "paused") resumeGame();
+      } else if (event.key === "p" || event.key === "P") {
+        if (game.mode === "playing") pauseGame();
+        else if (game.mode === "paused") resumeGame();
+      } else if (event.key === "m" || event.key === "M") {
+        toggleMute();
+      }
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden && game.mode === "playing") pauseGame();
+    });
+
+    let resizeTimer = 0;
+    window.addEventListener("resize", function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () {
+        resize(false);
+      }, 80);
+    });
+    window.addEventListener("orientationchange", function () {
+      window.setTimeout(function () {
+        resize(false);
+      }, 180);
+    });
+  }
+
+  function init() {
+    updateSoundButton();
+    updateHud();
+    resize(true);
+    bindEvents();
+    showScreen("start");
+    window.requestAnimationFrame(frame);
+
+    const singleFile = document.querySelector('meta[name="gold-miner-single"]');
+    if (!singleFile && "serviceWorker" in navigator && (location.protocol === "http:" || location.protocol === "https:")) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./sw.js").catch(function () {
+          /* PWA 注册失败不影响游戏。 */
+        });
+      });
+    }
+  }
+
+  if (new URLSearchParams(window.location.search).has("debug")) {
+    window.__GOLD_MINER__ = {
+      snapshot: function () {
+        return {
+          mode: game.mode,
+          hookState: game.hook.state,
+          angle: game.hook.angle,
+          level: game.level,
+          money: game.money,
+          levelEarned: game.levelEarned,
+          target: game.target,
+          timeLeft: game.timeLeft,
+          strength: game.strength,
+          inventory: Object.assign({}, game.inventory),
+          itemCount: game.items.length,
+          items: game.items.map(function (item) {
+            return { type: item.type, x: item.x, y: item.y, r: item.r, state: item.state };
+          })
+        };
+      },
+      start: startGame,
+      fire: fireHook,
+      setAngle: function (angle) {
+        game.hook.angle = clamp(angle, -MAX_ANGLE, MAX_ANGLE);
+        game.hook.state = "swing";
+      },
+      setTime: function (seconds) {
+        if (game.mode === "playing") game.timeLeft = Math.max(0, Number(seconds) || 0);
+      },
+      finishLevel: function (win) {
+        if (game.mode !== "playing") return;
+        game.levelEarned = win ? game.target : Math.max(0, game.target - 100);
+        endLevel();
+      },
+      useTnt: useTnt,
+      grant: function (kind, amount) {
+        const value = Math.max(0, Math.floor(Number(amount) || 0));
+        if (kind === "money") game.money += value;
+        else if (Object.prototype.hasOwnProperty.call(game.inventory, kind)) game.inventory[kind] += value;
+        updateHud();
+        updateShop();
+      }
+    };
+  }
+
+  init();
+})();
+
+</script>
+</body>
+</html>
