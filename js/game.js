@@ -1050,10 +1050,10 @@
     };
   }
 
-  function drawHookClaw(x, y, angle) {
+  function drawHookClaw(x, y, ropeAngle) {
     ctx.save();
     ctx.translate(x, y);
-    ctx.rotate(angle);
+    ctx.rotate(-ropeAngle);
     ctx.strokeStyle = "#2d1a0d";
     ctx.lineWidth = 5;
     ctx.lineCap = "round";
@@ -1120,7 +1120,8 @@
     ctx.stroke();
     ctx.restore();
 
-    drawHookClaw(visualTip.x, visualTip.y, hook.angle);
+    const ropeAngle = Math.atan2(visualTip.x - W / 2, visualTip.y - PIVOT_Y);
+    drawHookClaw(visualTip.x, visualTip.y, ropeAngle);
   }
 
   function spawnBurst(x, y, colors, count, speed, size) {
