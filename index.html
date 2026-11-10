@@ -65,6 +65,11 @@
       <path d="M19 8.5A8 8 0 1 0 20 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
       <path d="M19 4.5v5h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-music" viewBox="0 0 24 24">
+      <path d="M9 17V6.5l9-1.8v10.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6.5" cy="17.5" r="2.8" fill="currentColor"/>
+      <circle cx="15.5" cy="15.5" r="2.8" fill="currentColor"/>
+    </symbol>
   </svg>
 
   <main id="app">
@@ -97,6 +102,9 @@
             <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
             <span class="progress-label" id="progressLabel">¥0 / ¥650</span>
           </div>
+          <button class="icon-btn music-btn" id="musicBtn" type="button" aria-label="切换背景音乐">
+            <svg class="icon" aria-hidden="true"><use href="#i-music"></use></svg>
+          </button>
         </div>
       </header>
 
@@ -204,6 +212,7 @@
     </div>
   </main>
 
+  <script src="config.js"></script>
   <script src="js/core.js"></script>
   <script src="js/game.js"></script>
 </body>

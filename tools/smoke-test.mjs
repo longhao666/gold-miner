@@ -123,8 +123,15 @@ async function main() {
       level: snapshot.level,
       itemCount: snapshot.itemCount,
       target: snapshot.target,
-      timeLeft: snapshot.timeLeft
+      timeLeft: snapshot.timeLeft,
+      hookSpeed: snapshot.hookSpeed,
+      musicTrack: snapshot.musicTrack
     };
+    await page.click("#musicBtn");
+    await page.waitForTimeout(150);
+    snapshot = await page.evaluate("__GOLD_MINER__.snapshot()");
+    results.musicAfterSwitch = snapshot.musicTrack;
+    results.musicRunning = snapshot.musicRunning;
     await page.screenshot({ path: path.join(screenshots, "02-playing.png") });
 
     const priority = { diamond: 0, goldS: 1, goldM: 2, goldL: 3, clover: 4, strength: 5, tnt: 6, rockS: 7, rockL: 8 };
@@ -222,6 +229,7 @@ async function main() {
       mode: snapshot.mode,
       level: snapshot.level,
       strength: snapshot.strength,
+      hookSpeed: snapshot.hookSpeed,
       inventory: snapshot.inventory,
       rocks: snapshot.items.filter(function (item) {
         return item.type === "rockS" || item.type === "rockL";
@@ -237,6 +245,20 @@ async function main() {
       }).length
     };
     await page.screenshot({ path: path.join(screenshots, "08-tnt.png") });
+
+    await page.evaluate("__GOLD_MINER__.start()");
+    await page.waitForTimeout(300);
+    await page.evaluate("__GOLD_MINER__.clearItems()");
+    await page.waitForTimeout(300);
+    snapshot = await page.evaluate("__GOLD_MINER__.snapshot()");
+    results.earlyClear = {
+      mode: snapshot.mode,
+      cleared: snapshot.cleared,
+      timeLeft: snapshot.timeLeft,
+      resultVisible: await page.locator("#resultScreen").evaluate(function (element) {
+        return element.classList.contains("is-visible");
+      })
+    };
 
     results.serviceWorker = await page.evaluate(function () {
       return navigator.serviceWorker.getRegistrations().then(function (items) {
@@ -256,7 +278,10 @@ async function main() {
       results.shopDisabledAfter || results.purchase.inventory.tnt !== 1 ||
       results.nextLevel.strength <= 0 || results.nextLevel.inventory.strength !== 0 ||
       results.nextLevel.inventory.clover !== 0 || results.tnt.rocks !== 0 ||
-      results.tnt.inventory.tnt !== 0 || results.overflow || results.serviceWorker < 1 || errors.length > 0;
+      results.tnt.inventory.tnt !== 0 || results.musicAfterSwitch !== 1 || !results.musicRunning ||
+      Math.abs(results.afterStart.hookSpeed - 0.72) > 0.001 ||
+      !results.earlyClear.cleared || results.earlyClear.mode !== "result" ||
+      !results.earlyClear.resultVisible || results.overflow || results.serviceWorker < 1 || errors.length > 0;
     if (failed) process.exitCode = 1;
   } finally {
     await context.close();

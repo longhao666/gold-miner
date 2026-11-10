@@ -244,6 +244,30 @@ svg {
   font-variant-numeric: tabular-nums;
 }
 
+.hud-bottom .music-btn {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.music-btn::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 16px;
+}
+
+.music-btn .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.music-btn.is-off {
+  opacity: 0.5;
+}
+
 .progress-wrap {
   flex: 1;
   min-width: 0;
@@ -1030,6 +1054,12 @@ svg {
   .icon-btn {
     width: 32px;
     height: 32px;
+  }
+
+  .hud-bottom .music-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
   }
 
   .money-pill {

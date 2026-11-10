@@ -12,6 +12,7 @@ const readBase64 = function (relativePath) {
 
 const html = read("index.html");
 const css = read("css/style.css");
+const config = read("config.js");
 const core = read("js/core.js");
 const game = read("js/game.js");
 const iconSvg = readBase64("assets/icon.svg");
@@ -34,6 +35,10 @@ let output = html
   .replace(
     /<link rel="stylesheet" href="css\/style\.css">/,
     "<style>\n" + css + "\n</style>"
+  )
+  .replace(
+    /<script src="config\.js"><\/script>/,
+    "<script>\n" + inlineScript(config) + "\n</script>"
   )
   .replace(
     /<script src="js\/core\.js"><\/script>/,

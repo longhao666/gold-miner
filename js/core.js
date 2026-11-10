@@ -13,6 +13,13 @@
   const WORLD_WIDTH = 540;
   const LEVEL_SECONDS = 60;
   const BUFF_SECONDS = 8;
+  const DEFAULT_CONFIG = Object.freeze({
+    hookSwingSpeed: 0.72,
+    hookSwingSpeedPerLevel: 0.018,
+    hookSwingSpeedMax: 0.9,
+    musicVolume: 0.9
+  });
+  const MUSIC_TRACK_COUNT = 3;
 
   const ITEM_DEFS = Object.freeze({
     goldS: { label: "小金块", kind: "gold", value: 55, weight: 0.8, radius: 17 },
@@ -28,6 +35,32 @@
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
+  }
+
+  function normalizeConfig(raw) {
+    const data = raw && typeof raw === "object" ? raw : {};
+    const speed = Number(data.hookSwingSpeed);
+    const perLevel = Number(data.hookSwingSpeedPerLevel);
+    const maxSpeed = Number(data.hookSwingSpeedMax);
+    const musicVolume = Number(data.musicVolume);
+    const hookSwingSpeed = Number.isFinite(speed)
+      ? clamp(speed, 0.2, 2)
+      : DEFAULT_CONFIG.hookSwingSpeed;
+    const hookSwingSpeedPerLevel = Number.isFinite(perLevel)
+      ? clamp(perLevel, 0, 0.2)
+      : DEFAULT_CONFIG.hookSwingSpeedPerLevel;
+    const hookSwingSpeedMax = Number.isFinite(maxSpeed)
+      ? clamp(maxSpeed, hookSwingSpeed, 3)
+      : Math.max(hookSwingSpeed, DEFAULT_CONFIG.hookSwingSpeedMax);
+    const safeMusicVolume = Number.isFinite(musicVolume)
+      ? clamp(musicVolume, 0, 1)
+      : DEFAULT_CONFIG.musicVolume;
+    return {
+      hookSwingSpeed: hookSwingSpeed,
+      hookSwingSpeedPerLevel: hookSwingSpeedPerLevel,
+      hookSwingSpeedMax: hookSwingSpeedMax,
+      musicVolume: safeMusicVolume
+    };
   }
 
   function levelTarget(level) {
@@ -215,7 +248,7 @@
   }
 
   function sanitizeSave(raw) {
-    const defaults = { bestScore: 0, bestLevel: 1, muted: false };
+    const defaults = { bestScore: 0, bestLevel: 1, muted: false, musicTrack: 0 };
     let data = raw;
     if (typeof data === "string") {
       try {
@@ -228,10 +261,14 @@
 
     const score = Number(data.bestScore);
     const level = Number(data.bestLevel);
+    const musicTrack = Number(data.musicTrack);
     return {
       bestScore: Number.isFinite(score) ? clamp(Math.floor(score), 0, 999999999) : 0,
       bestLevel: Number.isFinite(level) ? clamp(Math.floor(level), 1, 999) : 1,
-      muted: typeof data.muted === "boolean" ? data.muted : false
+      muted: typeof data.muted === "boolean" ? data.muted : false,
+      musicTrack: Number.isFinite(musicTrack)
+        ? clamp(Math.floor(musicTrack), -1, MUSIC_TRACK_COUNT - 1)
+        : 0
     };
   }
 
@@ -252,8 +289,11 @@
     WORLD_WIDTH: WORLD_WIDTH,
     LEVEL_SECONDS: LEVEL_SECONDS,
     BUFF_SECONDS: BUFF_SECONDS,
+    DEFAULT_CONFIG: DEFAULT_CONFIG,
+    MUSIC_TRACK_COUNT: MUSIC_TRACK_COUNT,
     ITEM_DEFS: ITEM_DEFS,
     clamp: clamp,
+    normalizeConfig: normalizeConfig,
     levelTarget: levelTarget,
     retrieveSpeed: retrieveSpeed,
     mulberry32: mulberry32,

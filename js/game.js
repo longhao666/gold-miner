@@ -7,6 +7,7 @@
     return;
   }
 
+  const CONFIG = C.normalizeConfig(window.GOLD_MINER_CONFIG);
   const W = C.WORLD_WIDTH;
   const PIVOT_Y = 208;
   const HOOK_MIN = 58;
@@ -32,6 +33,7 @@
     progressLabel: $("progressLabel"),
     soundBtn: $("soundBtn"),
     soundIconUse: $("soundIconUse"),
+    musicBtn: $("musicBtn"),
     pauseBtn: $("pauseBtn"),
     tntBtn: $("tntBtn"),
     tntCount: $("tntCount"),
@@ -83,6 +85,7 @@
     target: C.levelTarget(1),
     timeLeft: C.LEVEL_SECONDS,
     timeUp: false,
+    cleared: false,
     strength: 0,
     inventory: { tnt: 0, strength: 0, clover: 0 },
     items: [],
@@ -92,7 +95,7 @@
     hook: {
       angle: 0,
       dir: 1,
-      speed: 1.15,
+      speed: CONFIG.hookSwingSpeed,
       length: HOOK_MIN,
       maxLength: 1000,
       state: "swing",
@@ -233,6 +236,168 @@
     }
   };
 
+  const MUSIC_TRACKS = [
+    {
+      name: "矿洞回响",
+      bpm: 76,
+      root: 57,
+      wave: "triangle",
+      leadGain: 0.032,
+      bassGain: 0.024,
+      lead: [0, null, 3, null, 5, null, 3, null, -2, null, 0, 3, 5, null, 7, null],
+      bass: [0, null, null, null, -5, null, null, null, 3, null, null, null, -2, null, null, null]
+    },
+    {
+      name: "星夜矿歌",
+      bpm: 90,
+      root: 64,
+      wave: "sine",
+      leadGain: 0.028,
+      bassGain: 0.02,
+      lead: [0, 7, 12, 7, 3, 10, 15, 10, 0, 7, 12, 7, -2, 5, 10, 5],
+      bass: [0, null, null, null, -5, null, null, null, -2, null, null, null, -7, null, null, null]
+    },
+    {
+      name: "老式留声机",
+      bpm: 104,
+      root: 60,
+      wave: "triangle",
+      leadGain: 0.026,
+      bassGain: 0.022,
+      lead: [0, 4, 7, 9, 7, 4, 0, 4, 5, 9, 12, 9, 7, 4, 2, 4],
+      bass: [0, null, null, null, 5, null, null, null, 7, null, null, null, 5, null, null, null]
+    }
+  ];
+
+  function midiToFrequency(note) {
+    return 440 * Math.pow(2, (note - 69) / 12);
+  }
+
+  const Music = {
+    timer: 0,
+    master: null,
+    nextTime: 0,
+    step: 0,
+    trackIndex: -1,
+    running: false,
+    start: function (trackIndex, restart) {
+      const index = Number(trackIndex);
+      const track = MUSIC_TRACKS[index];
+      if (save.muted || !track) {
+        this.stop();
+        return;
+      }
+      if (this.running && this.trackIndex === index && !restart) return;
+      const ac = Sound.ensure();
+      if (!ac) return;
+      this.stop();
+      this.trackIndex = index;
+      this.running = true;
+      this.step = 0;
+      this.master = ac.createGain();
+      this.master.gain.setValueAtTime(Math.max(0.0001, CONFIG.musicVolume * 0.9), ac.currentTime);
+      this.master.connect(ac.destination);
+      this.nextTime = ac.currentTime + 0.08;
+      const self = this;
+      this.timer = window.setInterval(function () {
+        self.schedule();
+      }, 120);
+      this.schedule();
+    },
+    stop: function () {
+      this.running = false;
+      this.trackIndex = -1;
+      if (this.timer) {
+        window.clearInterval(this.timer);
+        this.timer = 0;
+      }
+      if (this.master) {
+        const master = this.master;
+        this.master = null;
+        try {
+          const ac = Sound.ctx;
+          if (ac) {
+            master.gain.cancelScheduledValues(ac.currentTime);
+            master.gain.setTargetAtTime(0.0001, ac.currentTime, 0.025);
+          }
+          window.setTimeout(function () {
+            try {
+              master.disconnect();
+            } catch (error) {
+              /* 已断开时忽略。 */
+            }
+          }, 300);
+        } catch (error) {
+          /* 忽略音频节点清理错误。 */
+        }
+      }
+    },
+    schedule: function () {
+      const ac = Sound.ctx;
+      const track = MUSIC_TRACKS[this.trackIndex];
+      if (!this.running || !this.master || !ac || !track || save.muted || save.musicTrack < 0) {
+        this.stop();
+        return;
+      }
+      if (ac.state === "closed") {
+        this.stop();
+        return;
+      }
+      if (ac.state !== "running") {
+        this.nextTime = ac.currentTime + 0.08;
+        return;
+      }
+      const stepDuration = 60 / track.bpm / 2;
+      while (this.nextTime < ac.currentTime + 0.45) {
+        const step = this.step;
+        const lead = track.lead[step % track.lead.length];
+        if (lead !== null) {
+          this.note(
+            ac,
+            track.root + lead,
+            this.nextTime,
+            Math.min(0.58, stepDuration * 1.35),
+            track.wave,
+            track.leadGain
+          );
+        }
+        if (step % 2 === 0) {
+          const bass = track.bass[(step / 2) % track.bass.length];
+          if (bass !== null) {
+            this.note(
+              ac,
+              track.root + bass - 12,
+              this.nextTime,
+              Math.min(0.9, stepDuration * 2.8),
+              "sine",
+              track.bassGain
+            );
+          }
+        }
+        this.nextTime += stepDuration;
+        this.step += 1;
+      }
+    },
+    note: function (ac, note, start, duration, type, gainValue) {
+      if (!this.master) return;
+      try {
+        const osc = ac.createOscillator();
+        const gain = ac.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(midiToFrequency(note), start);
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, gainValue), start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+        osc.connect(gain);
+        gain.connect(this.master);
+        osc.start(start);
+        osc.stop(start + duration + 0.05);
+      } catch (error) {
+        /* 音频失败不影响玩法。 */
+      }
+    }
+  };
+
   function vibrate(pattern) {
     try {
       if (navigator.vibrate) navigator.vibrate(pattern);
@@ -245,6 +410,27 @@
     els.soundIconUse.setAttribute("href", save.muted ? "#i-muted" : "#i-sound");
     els.soundBtn.setAttribute("aria-pressed", String(save.muted));
     els.soundBtn.setAttribute("aria-label", save.muted ? "开启音效" : "关闭音效");
+  }
+
+  function updateMusicButton() {
+    const track = MUSIC_TRACKS[save.musicTrack];
+    const off = save.musicTrack < 0;
+    els.musicBtn.classList.toggle("is-off", off);
+    els.musicBtn.setAttribute(
+      "aria-label",
+      off ? "背景音乐已关闭，点击切换" : "当前背景音乐：" + track.name + "，点击切换"
+    );
+    els.musicBtn.title = off ? "背景音乐已关闭" : "当前背景音乐：" + track.name;
+  }
+
+  function cycleMusic() {
+    save.musicTrack = save.musicTrack >= MUSIC_TRACKS.length - 1 ? -1 : save.musicTrack + 1;
+    persist();
+    updateMusicButton();
+    Music.start(save.musicTrack, true);
+    const label = save.musicTrack < 0 ? "背景音乐已关闭" : "背景音乐：" + MUSIC_TRACKS[save.musicTrack].name;
+    showToast(save.muted ? "音效已关闭，开启后可听到" : label, 1300);
+    Sound.click();
   }
 
   const buffChip = document.createElement("div");
@@ -1242,11 +1428,15 @@
     game.hook.length = HOOK_MIN;
     game.hook.state = "swing";
     game.hook.item = null;
-    game.hook.speed = 1.12 + Math.min(0.34, (game.level - 1) * 0.035);
+    game.hook.speed = Math.min(
+      CONFIG.hookSwingSpeedMax,
+      CONFIG.hookSwingSpeed + Math.max(0, game.level - 1) * CONFIG.hookSwingSpeedPerLevel
+    );
   }
 
   function startGame() {
     Sound.ensure();
+    Music.start(save.musicTrack);
     Sound.click();
     game.money = 0;
     game.inventory = { tnt: 0, strength: 0, clover: 0 };
@@ -1260,6 +1450,7 @@
     game.lastTimeShown = null;
     game.levelEarned = 0;
     game.timeUp = false;
+    game.cleared = false;
     game.strength = 0;
     game.items = generateLevel(level);
     game.particles = [];
@@ -1360,6 +1551,7 @@
         hook.item = null;
         hook.state = "swing";
         if (game.timeUp) endLevel();
+        else maybeFinishClearedLevel();
       }
     }
   }
@@ -1422,6 +1614,7 @@
       showToast(source === "pickup" ? "炸药包炸开了，场上没有石头" : "炸药炸了个寂寞：场上没有石头");
     }
     updateHud();
+    maybeFinishClearedLevel();
   }
 
   function useTnt() {
@@ -1433,6 +1626,14 @@
     }
     game.inventory.tnt -= 1;
     explodeRocks("manual");
+  }
+
+  function maybeFinishClearedLevel() {
+    if (game.mode !== "playing" || game.timeUp || game.cleared) return;
+    if (game.items.length > 0 || game.hook.item || game.hook.state !== "swing") return;
+    game.cleared = true;
+    showToast("矿脉已清空，提前收工", 1100);
+    endLevel();
   }
 
   function endLevel() {
@@ -1453,7 +1654,9 @@
   function fillResult(win) {
     els.resultEyebrow.textContent = "第 " + game.level + " 关 · " + (win ? "达标" : "未达标");
     els.resultTitle.textContent = win ? "矿脉拿下！" : "差一点点";
-    els.resultSub.textContent = win ? "目标达成，下一层矿脉更深。" : "再试一次，先抓钻石和小金块。";
+    els.resultSub.textContent = win
+      ? (game.cleared ? "矿脉清空，提前收工。" : "目标达成，下一层矿脉更深。")
+      : (game.cleared ? "矿脉清空，但还差一点目标。" : "再试一次，先抓钻石和小金块。");
     els.resultIcon.classList.toggle("fail", !win);
     els.resultIconUse.setAttribute("href", win ? "#i-star" : "#i-clock");
     els.resultEarned.textContent = moneyText(game.levelEarned);
@@ -1518,7 +1721,12 @@
     save.muted = !save.muted;
     persist();
     updateSoundButton();
-    if (!save.muted) Sound.click();
+    if (save.muted) {
+      Music.stop();
+    } else {
+      Music.start(save.musicTrack);
+      Sound.click();
+    }
     showToast(save.muted ? "音效已关闭" : "音效已开启", 1000);
   }
 
@@ -1594,6 +1802,7 @@
       else if (game.mode === "paused") resumeGame();
     });
     els.soundBtn.addEventListener("click", toggleMute);
+    els.musicBtn.addEventListener("click", cycleMusic);
     els.tntBtn.addEventListener("click", useTnt);
     els.shopBtn.addEventListener("click", openShop);
     els.nextLevelBtn.addEventListener("click", function () {
@@ -1638,7 +1847,13 @@
     });
 
     document.addEventListener("visibilitychange", function () {
-      if (document.hidden && game.mode === "playing") pauseGame();
+      if (document.hidden) {
+        game.musicWasRunning = Music.running;
+        if (game.mode === "playing") pauseGame();
+        Music.stop();
+      } else if (game.musicWasRunning && !save.muted && save.musicTrack >= 0) {
+        Music.start(save.musicTrack);
+      }
     });
 
     let resizeTimer = 0;
@@ -1657,6 +1872,7 @@
 
   function init() {
     updateSoundButton();
+    updateMusicButton();
     updateHud();
     resize(true);
     bindEvents();
@@ -1679,13 +1895,17 @@
         return {
           mode: game.mode,
           hookState: game.hook.state,
+          hookSpeed: game.hook.speed,
           angle: game.hook.angle,
           level: game.level,
           money: game.money,
           levelEarned: game.levelEarned,
           target: game.target,
           timeLeft: game.timeLeft,
+          cleared: game.cleared,
           strength: game.strength,
+          musicTrack: save.musicTrack,
+          musicRunning: Music.running,
           inventory: Object.assign({}, game.inventory),
           itemCount: game.items.length,
           items: game.items.map(function (item) {
@@ -1706,6 +1926,11 @@
         if (game.mode !== "playing") return;
         game.levelEarned = win ? game.target : Math.max(0, game.target - 100);
         endLevel();
+      },
+      clearItems: function () {
+        if (game.mode !== "playing") return;
+        game.items = [];
+        maybeFinishClearedLevel();
       },
       useTnt: useTnt,
       grant: function (kind, amount) {

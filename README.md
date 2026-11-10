@@ -1,6 +1,6 @@
 # 黄金矿工 · 矿脉深处
 
-一款移动优先的 HTML5 黄金矿工小游戏。摆动钩子、抓取矿物、在 60 秒内完成本关目标。全部美术与音效均由 Canvas / Web Audio 程序化生成，不依赖外部素材；支持离线 PWA，也可以打包成单个 HTML 文件直接传到手机打开。
+一款移动优先的 HTML5 黄金矿工小游戏。摆动钩子、抓取矿物、在 60 秒内完成本关目标。全部美术、音效和背景音乐均由 Canvas / Web Audio 程序化生成，不依赖外部素材；支持离线 PWA，也可以打包成单个 HTML 文件直接传到手机打开。
 
 ## 快速开始
 
@@ -29,6 +29,7 @@ npm run serve
 - 本关收入达到目标即可过关，金币会跨关累计。
 - 关卡目标：`650 + 450 × (关卡 - 1)`。
 - 时间耗尽后等待钩子返回，再判定通关或失败。
+- 如果场上物品全部清空，会立即结算，不再等待倒计时结束。
 
 | 物品 | 价值 | 特点 |
 | --- | ---: | --- |
@@ -57,9 +58,26 @@ npm run serve
 - `空格`：发射钩子
 - `P`：暂停 / 继续
 - `M`：静音 / 取消静音
-- HUD 按钮：音效、暂停、炸药
+- HUD 按钮：音效、背景音乐、暂停、炸药
+
+右下角音符按钮可循环切换 3 首默认背景音乐（矿洞回响、星夜矿歌、老式留声机），再点一次会关闭音乐。当前曲目会保存在本地。
 
 页面切到后台会自动暂停；触控区域不小于 44px，并适配安全区和刘海屏。
+
+## 配置
+
+编辑根目录的 `config.js` 可以调整钩子摆动速度与背景音乐音量：
+
+```js
+window.GOLD_MINER_CONFIG = {
+  hookSwingSpeed: 0.72,        // 默认摆动速度，越小越慢
+  hookSwingSpeedPerLevel: 0.018,
+  hookSwingSpeedMax: 0.9,
+  musicVolume: 0.9
+};
+```
+
+修改后刷新网页即可生效；如果使用单文件版，需要重新运行 `npm run build`。
 
 ## 开发
 
@@ -80,6 +98,7 @@ npm install
 ```text
 index.html                 页面与覆盖层
 css/style.css              移动优先样式
+config.js                  可调整的钩子速度与音乐音量
 js/core.js                 可测试的纯逻辑（关卡、生成、存档）
 js/game.js                 游戏循环、绘制、输入、音效、商店
 manifest.webmanifest       PWA 清单
@@ -94,12 +113,11 @@ openspec/                  OpenSpec 变更与规格
 
 ## OpenSpec
 
-本项目的需求、设计与任务记录在 `openspec/changes/add-gold-miner-game/`：
+本项目的需求、设计与任务记录在 `openspec/changes/archive/2026-11-10-add-gold-miner-game/`：
 
 ```powershell
-openspec validate add-gold-miner-game --strict
-openspec status --change add-gold-miner-game
-openspec archive add-gold-miner-game
+openspec validate --specs --strict
+openspec validate --archived --strict
 ```
 
 ## 说明

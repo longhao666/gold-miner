@@ -75,19 +75,32 @@ test("布点全部在边界内且互不重叠", () => {
 });
 
 test("存档清洗回退损坏数据并限制范围", () => {
-  assert.deepEqual(core.sanitizeSave(null), { bestScore: 0, bestLevel: 1, muted: false });
-  assert.deepEqual(core.sanitizeSave("{bad json"), { bestScore: 0, bestLevel: 1, muted: false });
-  assert.deepEqual(core.sanitizeSave("[]"), { bestScore: 0, bestLevel: 1, muted: false });
+  assert.deepEqual(core.sanitizeSave(null), { bestScore: 0, bestLevel: 1, muted: false, musicTrack: 0 });
+  assert.deepEqual(core.sanitizeSave("{bad json"), { bestScore: 0, bestLevel: 1, muted: false, musicTrack: 0 });
+  assert.deepEqual(core.sanitizeSave("[]"), { bestScore: 0, bestLevel: 1, muted: false, musicTrack: 0 });
   assert.deepEqual(core.sanitizeSave({ bestScore: "x", bestLevel: -4, muted: "yes" }), {
     bestScore: 0,
     bestLevel: 1,
-    muted: false
+    muted: false,
+    musicTrack: 0
   });
-  assert.deepEqual(core.sanitizeSave({ bestScore: 1200.8, bestLevel: 3.9, muted: true }), {
+  assert.deepEqual(core.sanitizeSave({ bestScore: 1200.8, bestLevel: 3.9, muted: true, musicTrack: 99 }), {
     bestScore: 1200,
     bestLevel: 3,
-    muted: true
+    muted: true,
+    musicTrack: 2
   });
+  assert.equal(core.sanitizeSave({ musicTrack: -9 }).musicTrack, -1);
+});
+
+test("配置读取提供默认摆动速度并限制非法值", () => {
+  const defaults = core.normalizeConfig(null);
+  assert.equal(defaults.hookSwingSpeed, 0.72);
+  assert.ok(defaults.hookSwingSpeedMax >= defaults.hookSwingSpeed);
+  assert.equal(core.normalizeConfig({ hookSwingSpeed: 0.5 }).hookSwingSpeed, 0.5);
+  assert.equal(core.normalizeConfig({ hookSwingSpeed: "fast" }).hookSwingSpeed, 0.72);
+  assert.equal(core.normalizeConfig({ hookSwingSpeed: 9 }).hookSwingSpeed, 2);
+  assert.equal(core.normalizeConfig({ musicVolume: 2 }).musicVolume, 1);
 });
 
 test("时间格式化与随机奖励范围", () => {

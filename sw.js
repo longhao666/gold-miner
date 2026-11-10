@@ -1,8 +1,9 @@
-const CACHE_NAME = "gold-miner-v1.0.0";
+const CACHE_NAME = "gold-miner-v1.1.0";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./css/style.css",
+  "./config.js",
   "./js/core.js",
   "./js/game.js",
   "./manifest.webmanifest",
