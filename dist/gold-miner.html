@@ -309,6 +309,7 @@ svg {
   font-size: 10px;
   color: var(--muted);
   white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
   font-variant-numeric: tabular-nums;
 }
 
@@ -2308,22 +2309,24 @@ window.GOLD_MINER_CONFIG = {
     }
     b.globalAlpha = 1;
 
-    const moonGlow = b.createRadialGradient(W - 76, 66, 6, W - 76, 66, 60);
+    const moonX = W - 96;
+    const moonY = 184;
+    const moonGlow = b.createRadialGradient(moonX, moonY, 6, moonX, moonY, 60);
     moonGlow.addColorStop(0, "rgba(255, 238, 184, 0.42)");
     moonGlow.addColorStop(0.5, "rgba(255, 220, 140, 0.12)");
     moonGlow.addColorStop(1, "rgba(255, 210, 120, 0)");
     b.fillStyle = moonGlow;
     b.beginPath();
-    b.arc(W - 76, 66, 60, 0, Math.PI * 2);
+    b.arc(moonX, moonY, 60, 0, Math.PI * 2);
     b.fill();
     b.fillStyle = "#ffe8b3";
     b.beginPath();
-    b.arc(W - 76, 66, 24, 0, Math.PI * 2);
+    b.arc(moonX, moonY, 24, 0, Math.PI * 2);
     b.fill();
     b.fillStyle = "rgba(190, 154, 96, 0.18)";
     [[-7, -5, 5], [6, 7, 3.5], [9, -8, 2.6]].forEach(function (crater) {
       b.beginPath();
-      b.arc(W - 76 + crater[0], 66 + crater[1], crater[2], 0, Math.PI * 2);
+      b.arc(moonX + crater[0], moonY + crater[1], crater[2], 0, Math.PI * 2);
       b.fill();
     });
 

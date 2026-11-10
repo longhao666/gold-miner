@@ -273,7 +273,8 @@ async function main() {
     console.log(JSON.stringify(results, null, 2));
 
     const failed = !results.debugApi || !results.startVisible || results.afterStart.mode !== "playing" ||
-      results.afterGrab.money <= 0 || !results.pause.frozen || !results.failResult.resultVisible ||
+      results.afterGrab.mode !== "playing" || results.afterGrab.itemCount >= results.afterStart.itemCount ||
+      results.afterGrab.hookState !== "swing" || !results.pause.frozen || !results.failResult.resultVisible ||
       results.restart.money !== 0 || results.shop.mode !== "shop" || !results.shopDisabledBefore ||
       results.shopDisabledAfter || results.purchase.inventory.tnt !== 1 ||
       results.nextLevel.strength <= 0 || results.nextLevel.inventory.strength !== 0 ||
